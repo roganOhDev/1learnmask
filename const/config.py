@@ -1,18 +1,8 @@
+import os
 from enum import Enum
 
-# radar graph
-angle = 0
-label_size = 12
-labels = []
-while angle < 360:
-    labels.append(str(angle) + " degree")
-    angle += round(360 / label_size)
-
-max_distance = 25
-
-radar_latency = 0.5
 # database
-db_name = "test.db"
+db_name = "data.db"
 
 
 # version = RunVersion.debug
@@ -28,4 +18,8 @@ version = RunVersion.demo
 # port = "/dev/cu.Bluetooth-Incoming-Port"
 port = "/dev/cu.usbmodem1101"
 baudrate = 9600
-timeout = 2
+
+
+# chrome driver
+current_dir = os.path.dirname(os.path.abspath(__file__))
+driver_path = os.path.join(current_dir, './chromedriver/chromedriver')

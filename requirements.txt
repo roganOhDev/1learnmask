@@ -11,3 +11,4 @@ Werkzeug==2.3.4
 requests~=2.30.0
 bs4~=0.0.1
 selenium~=4.9.1
+colorlog~=6.7.0
