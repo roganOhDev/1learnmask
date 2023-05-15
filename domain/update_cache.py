@@ -1,11 +1,14 @@
 from const import data_cache
 from domain.air_quality.air_quality_pm10 import AirQualityPm10
 from domain.covid.covid import Covid
+from utils.log import logger
 
 
 def run():
     __init_covid_cache()
     __init_air_quality_cache()
+    logger.info("covid_date_cache : " + data_cache.last_covid_date)
+    logger.info("air_quality_cache : " + data_cache.last_air_quality_datetime)
 
 
 def __init_covid_cache():
