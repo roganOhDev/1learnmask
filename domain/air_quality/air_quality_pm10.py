@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Text, INTEGER, select
+from sqlalchemy import Column, Text, INTEGER, select, desc
 from sqlalchemy.ext.declarative import declarative_base
 from const.database_config import engine, get_db
 
@@ -9,7 +9,7 @@ Base.metadata.create_all(bind=engine)
 class AirQualityPm10(Base):
     __tablename__ = "air_quality10"
 
-    id = Column(INTEGER, primary_key=True, autoincrement= "auto")
+    id = Column(INTEGER, primary_key=True, autoincrement="auto")
     dataTime = Column(Text, nullable=False)
     pm10Value = Column(INTEGER, nullable=False)
 
@@ -23,8 +23,7 @@ class AirQualityPm10(Base):
         db.commit()
 
     @staticmethod
-    def select(where_data_time: str):
+    def get_latest_data():
         db = next(get_db())
-        stmt =  select(AirQualityPm10).where(AirQualityPm10.dataTime == where_data_time)
-        return db.execute(stmt).first()
-
+        stmt = select(AirQualityPm10).order_by(desc(AirQualityPm10.dataTime))
+        return db.execute(stmt).fetchone()
