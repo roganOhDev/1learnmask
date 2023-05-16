@@ -63,7 +63,6 @@ def __create_pm_10_data(now_data, now_data_time: datetime.datetime):
         log.logger.info("existing data : " + now_data.get('dataTime') + " , (pm10Value)")
 
 
-
 def __create_pm_25_data(now_data, now_data_time: datetime.datetime):
     if now_data_time > get_datetime_last_air_quality_datetime():
         log.logger.info("new data : " + now_data.get('dataTime') + " , (pm25Value)")
