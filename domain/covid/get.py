@@ -13,9 +13,14 @@ from const.data_cache import get_date_last_covid
 from domain.covid.covid import Covid
 from domain.update_cache import __set_date_last_covid_date
 from utils import log
+from utils.log import logger
 
 
 def get():
+    if __check_not_have_to_get_data():
+        logger.info("not have to update data")
+        return
+
     driver = __get_chrome_driver()
     covid_values = __get_covid_data_with_crowl(driver)
 
@@ -79,3 +84,10 @@ def __create_covid_data(covid: Covid):
         covid.save()
     else:
         log.logger.info("existing data : " + str(covid.date) + " , " + str(covid.value))
+
+
+def __check_not_have_to_get_data() -> bool:
+    if get_date_last_covid() >= datetime.date.today() - datetime.timedelta(days=1):
+        return True
+    else:
+        return False

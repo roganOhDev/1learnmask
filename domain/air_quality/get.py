@@ -7,10 +7,15 @@ from domain.air_quality.air_quality_pm10 import AirQualityPm10
 from domain.air_quality.air_quality_pm25 import AirQualityPm25
 from domain.update_cache import set_datetime_last_air_quality_datetime
 from utils import log
+from utils.log import logger
 from utils.time_utils import string_to_datetime_air_quality
 
 
 def get():
+    if __check_not_have_to_get_data():
+        logger.info("not have to update data")
+        return
+
     jj = __connect_api()
 
     totalCount = jj.get("response").get("body").get("totalCount")
@@ -66,3 +71,10 @@ def __create_pm_25_data(now_data, now_data_time: datetime.datetime):
 
     else:
         log.logger.info("existing data : " + now_data.get('dataTime') + " , (pm25Value)")
+
+
+def __check_not_have_to_get_data() -> bool:
+    if get_datetime_last_air_quality_datetime() >= datetime.datetime.now() - datetime.timedelta(hours=1):
+        return True
+    else:
+        return False
