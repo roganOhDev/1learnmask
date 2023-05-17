@@ -13,15 +13,14 @@ from utils.time_utils import string_to_datetime_air_quality
 
 def get():
     if __check_not_have_to_get_data():
-        logger.info("not have to update data")
+        logger.info("not have to update data : air_quality")
         return
 
     jj = __connect_api()
 
-    totalCount = jj.get("response").get("body").get("totalCount")
     base = jj.get("response").get("body").get("items")
 
-    __create(base, totalCount)
+    __create(base)
 
 
 def __connect_api():
@@ -41,11 +40,10 @@ def __connect_api():
     return res.json()
 
 
-def __create(base, total_count: int):
+def __create(base):
     first_data_time = base[0].get('dataTime')
 
-    for i in range(total_count):
-        now_data = base[i]
+    for now_data in base:
         now_data_time = string_to_datetime_air_quality(now_data.get('dataTime'))
 
         __create_pm_10_data(now_data, now_data_time)

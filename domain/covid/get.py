@@ -18,7 +18,7 @@ from utils.log import logger
 
 def get():
     if __check_not_have_to_get_data():
-        logger.info("not have to update data")
+        logger.info("not have to update data : covid")
         return
 
     driver = __get_chrome_driver()
