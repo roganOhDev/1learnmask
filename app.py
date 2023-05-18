@@ -1,7 +1,6 @@
 from flask import Flask
 
-from domain.covid import get as get_covid
-from domain.air_quality import get as get_air_quality
+from domain.update_data import update_data
 from utils.log import logger
 from apscheduler.schedulers.background import BackgroundScheduler
 from utils.updateschedule import job
@@ -23,8 +22,7 @@ with app.app_context():
 
 @app.route('/')
 def hello_world():  # put application's code here
-    get_covid.get()
-    get_air_quality.get()
+    update_data()
     logger.info("getting data is done!")
 
     return 'Hello World!'

@@ -1,6 +1,9 @@
+import datetime
+
 from const import data_cache
 from domain.air_quality.air_quality_pm10 import AirQualityPm10
 from domain.covid.covid import Covid
+from domain.yellow_dust.yellow_dust import YellowDust
 from utils.log import logger
 
 
@@ -29,3 +32,8 @@ def __init_air_quality_cache():
 
 def set_datetime_last_air_quality_datetime(datetime: str):
     data_cache.last_air_quality_datetime = datetime
+
+
+def set_yellow_dust_cache(datetime_: datetime.datetime, value: int):
+    data_cache.last_yellow_dust.datetime = datetime_
+    data_cache.last_yellow_dust.value = value

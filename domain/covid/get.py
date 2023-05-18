@@ -1,14 +1,11 @@
 import datetime
 
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from const.config import driver_path, covid_url
+from const.config import covid_url, chrome_driver
 from const.data_cache import get_date_last_covid
 from domain.covid.covid import Covid
 from domain.update_cache import __set_date_last_covid_date
@@ -37,11 +34,6 @@ def get():
 
 
 def __get_chrome_driver() -> WebDriver:
-    service = Service(driver_path)
-    options = Options()
-    options.add_argument('--headless')
-    chrome_driver = webdriver.Chrome(service=service, options=options)
-
     chrome_driver.get(covid_url)
 
     return chrome_driver
