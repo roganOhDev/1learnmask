@@ -1,9 +1,8 @@
 import datetime
 
 from const import data_cache
-from domain.air_quality.air_quality_pm10 import AirQualityPm10
+from domain.air_quality.air_quality import AirQuality
 from domain.covid.covid import Covid
-from domain.yellow_dust.yellow_dust import YellowDust
 from utils.log import logger
 
 
@@ -25,7 +24,7 @@ def __set_date_last_covid_date(date):
 
 
 def __init_air_quality_cache():
-    air_quality = AirQualityPm10.get_latest_data()
+    air_quality = AirQuality.get_latest_data()
     if air_quality:
         data_cache.last_air_quality_datetime = air_quality._data[0].dataTime
 

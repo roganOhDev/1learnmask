@@ -1,16 +1,11 @@
-drop table if exists air_quality10;
-drop table if exists air_quality25;
+drop table if exists air_quality;
 drop table if exists covid;
 drop table if exists cold;
 
-CREATE TABLE air_quality10
+CREATE TABLE air_quality
                 (id INTEGER PRIMARY KEY AUTOINCREMENT,
                  dataTime TEXT,
-                 pm10Value INTEGER);
-
-CREATE TABLE air_quality25
-                (id INTEGER PRIMARY KEY AUTOINCREMENT,
-                 dataTime TEXT,
+                 pm10Value INTEGER,
                  pm25Value INTEGER);
 
 CREATE TABLE covid
@@ -18,4 +13,4 @@ CREATE TABLE covid
                  date TEXT,
                  value INTEGER);
 
-CREATE TABLE cold(id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, value INTEGER);
+CREATE TABLE cold(id INTEGER PRIMARY KEY AUTOINCREMENT,year TEXT, date TEXT, value INTEGER);

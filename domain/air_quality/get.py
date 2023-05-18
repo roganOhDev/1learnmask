@@ -3,8 +3,7 @@ import datetime
 import requests
 
 from const.data_cache import get_datetime_last_air_quality_datetime
-from domain.air_quality.air_quality_pm10 import AirQualityPm10
-from domain.air_quality.air_quality_pm25 import AirQualityPm25
+from domain.air_quality.air_quality import AirQuality
 from domain.update_cache import set_datetime_last_air_quality_datetime
 from utils import log
 from utils.log import logger
@@ -46,28 +45,15 @@ def __create(base):
     for now_data in base:
         now_data_time = string_to_datetime_air_quality(now_data.get('dataTime'))
 
-        __create_pm_10_data(now_data, now_data_time)
-        __create_pm_25_data(now_data, now_data_time)
+        __create_data(now_data, now_data_time)
 
     set_datetime_last_air_quality_datetime(first_data_time)
 
 
-def __create_pm_10_data(now_data, now_data_time: datetime.datetime):
+def __create_data(now_data, now_data_time: datetime.datetime):
     if now_data_time > get_datetime_last_air_quality_datetime():
-        log.logger.info("new data : " + now_data.get('dataTime') + " , (pm10Value)")
-        AirQualityPm10(now_data.get('dataTime'), now_data.get('pm10Value')).save()
-
-    else:
-        log.logger.info("existing data : " + now_data.get('dataTime') + " , (pm10Value)")
-
-
-def __create_pm_25_data(now_data, now_data_time: datetime.datetime):
-    if now_data_time > get_datetime_last_air_quality_datetime():
-        log.logger.info("new data : " + now_data.get('dataTime') + " , (pm25Value)")
-        AirQualityPm25(now_data.get('dataTime'), now_data.get('pm25Value')).save()
-
-    else:
-        log.logger.info("existing data : " + now_data.get('dataTime') + " , (pm25Value)")
+        log.logger.info("new data : " + now_data.get('dataTime') + " , (air_quality)")
+        AirQuality(now_data.get('dataTime'), now_data.get('pm10Value'), now_data.get('pm25Value')).save()
 
 
 def __check_not_have_to_get_data() -> bool:

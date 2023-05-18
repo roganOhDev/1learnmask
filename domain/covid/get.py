@@ -74,8 +74,6 @@ def __create_covid_data(covid: Covid):
     if covid.date > get_date_last_covid():
         log.logger.info("new data : " + str(covid.date) + " , " + str(covid.value))
         covid.save()
-    else:
-        log.logger.info("existing data : " + str(covid.date) + " , " + str(covid.value))
 
 
 def __check_not_have_to_get_data() -> bool:

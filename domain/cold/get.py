@@ -1,15 +1,15 @@
-import csv
-import sqlite3
+import datetime
+from domain.cold.cold import Cold
 
-from const.config import db_name
 
-con = sqlite3.connect("../../" + db_name)
-cur = con.cursor()
+def get() -> int:
+    now = datetime.datetime.now()
+    cold_data = Cold.get_all_by_date(now)
 
-with open('./data.csv', 'r') as fin:
-    dr = csv.DictReader(fin)
-    to_db = [(i['date'], int(i['value'])) for i in dr]
+    sum = 0
+    for e in cold_data:
+        sum += e._data[0].value
 
-cur.executemany("INSERT INTO cold (date, value) VALUES (?, ?);", to_db)
-con.commit()
-con.close()
+    response = sum / cold_data.__len__()
+
+    return int(response)
