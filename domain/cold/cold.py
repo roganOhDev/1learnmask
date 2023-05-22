@@ -34,3 +34,9 @@ class Cold(Base):
         db = next(get_db())
         stmt = select(Cold).where(Cold.date == now_date)
         return db.execute(stmt).fetchall()
+
+    @staticmethod
+    def get_all():
+        db = next(get_db())
+        stmt = select(Cold)
+        return db.execute(stmt).fetchall()
