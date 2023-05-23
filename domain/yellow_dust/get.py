@@ -11,7 +11,7 @@ from domain.update_cache import set_yellow_dust_cache
 from utils.log import logger
 
 
-def get():
+def get() -> int:
     if __check_not_have_to_get_data():
         logger.info("not have to update data : yellow_dust")
         return
@@ -22,6 +22,8 @@ def get():
     set_yellow_dust_cache(now_datetime, value)
 
     driver.quit()
+
+    return int(value)
 
 
 def __get_chrome_driver() -> WebDriver:

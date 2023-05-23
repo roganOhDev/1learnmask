@@ -6,6 +6,8 @@ from utils.time_utils import string_to_datetime_air_quality, string_to_date_covi
 last_covid_date = ""
 last_air_quality_datetime = ""
 last_yellow_dust = YellowDust()
+last_cold_value = 0
+last_cold_date = datetime.date.min
 
 
 def get_datetime_last_air_quality_datetime():

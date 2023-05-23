@@ -8,5 +8,5 @@ def update_data():
     get_covid.get()
     get_air_quality.get()
     get_yellow_dust.get()
-    get_cold.get()
+    get_cold.learn()
 
