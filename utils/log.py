@@ -22,5 +22,3 @@ stream_handler.setFormatter(formatter)
 logger.addHandler(stream_handler)
 
 logging.getLogger('sqlalchemy').setLevel(logging.ERROR)
-
-# 김규빈 카톡 내일 알바 쨈 이정환
