@@ -22,8 +22,8 @@ def __init_covid_cache():
         data_cache.last_covid_date = str(covid._data[0].date)
 
 
-def __set_date_last_covid_date(date):
-    data_cache.last_covid_date = date
+def __set_date_last_covid_date(date: datetime.date):
+    data_cache.last_covid_date = str(date)
 
 
 def __init_air_quality_cache():
@@ -35,6 +35,7 @@ def __init_air_quality_cache():
 def __init_cold_cache():
     data_cache.last_cold_value = get_cold.learn()
     data_cache.last_cold_date = datetime.date.today()
+
 
 def set_datetime_last_air_quality_datetime(datetime: str):
     data_cache.last_air_quality_datetime = datetime

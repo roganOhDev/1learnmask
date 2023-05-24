@@ -1,3 +1,5 @@
+import datetime
+
 from sqlalchemy import Column, Text, INTEGER, desc
 from sqlalchemy.ext.declarative import declarative_base
 from const.database_config import engine, get_db
@@ -28,4 +30,10 @@ class Covid(Base):
     def get_latest_data():
         db = next(get_db())
         stmt = select(Covid).order_by(desc(Covid.date))
+        return db.execute(stmt).fetchone()
+
+    @staticmethod
+    def get_by_date(date: str):
+        db = next(get_db())
+        stmt = select(Covid).where(Covid.date == date)
         return db.execute(stmt).fetchone()

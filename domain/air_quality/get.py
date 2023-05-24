@@ -52,7 +52,7 @@ def __create(base):
 
 def __create_data(now_data, now_data_time: datetime.datetime):
     if now_data_time > get_datetime_last_air_quality_datetime():
-        log.logger.info("new data : " + now_data.get('dataTime') + " , (air_quality)")
+        log.logger.info("air quality new data : " + now_data.get('dataTime') + " , (air_quality)")
         AirQuality(now_data.get('dataTime'), now_data.get('pm10Value'), now_data.get('pm25Value')).save()
 
 

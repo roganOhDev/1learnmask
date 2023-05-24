@@ -22,7 +22,7 @@ def string_to_datetime_air_quality(string: str):
         return dt.strptime(string, '%Y-%m-%d %H:%M')
 
 
-def string_to_date_covid(string: str):
+def string_to_date_covid(string: str) -> datetime.date:
     return dt.strptime(string, '%Y-%m-%d').date()
 
 

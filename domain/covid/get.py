@@ -33,6 +33,33 @@ def get():
     driver.quit()
 
 
+def cnt_week_doubling() -> bool:
+    today = datetime.date.today()
+    check = 7
+    doubling_cnt = 0
+    while check != 0:
+        date = today - datetime.timedelta(days=check)
+        if is_week_doubling(date):
+            doubling_cnt += 1
+
+        check -= 1
+
+    if doubling_cnt >= 3:
+        return True
+    else:
+        return False
+
+
+def is_week_doubling(today: datetime.date) -> bool:
+    last_week = today - datetime.timedelta(weeks=1)
+    last_week_string = str(last_week)
+    today_string = str(today)
+    last_week_value = Covid.get_by_date(last_week_string)
+    today_value = Covid.get_by_date(today_string)
+
+    return today_value >= 2 * last_week_value
+
+
 def __get_chrome_driver() -> WebDriver:
     chrome_driver.get(covid_url)
 
@@ -72,7 +99,7 @@ def __check_and_save_in_db(element, date):
 
 def __create_covid_data(covid: Covid):
     if covid.date > get_date_last_covid():
-        log.logger.info("new data : " + str(covid.date) + " , " + str(covid.value))
+        log.logger.info("covid new data : " + str(covid.date) + " , " + str(covid.value))
         covid.save()
 
 
