@@ -22,10 +22,16 @@ with app.app_context():
 
 @app.route('/')
 def hello_world():  # put application's code here
-    update_data()
+    grade, mask = update_data()
     logger.info("getting data is done!")
 
-    return 'Hello World!'
+    mask_string = ""
+    if mask:
+        mask_string = "True"
+    else:
+        mask_string = "False"
+
+    return "grade : " + str(grade) + ", mask : " + mask_string
 
 
 if __name__ == '__main__':

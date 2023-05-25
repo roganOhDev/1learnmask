@@ -8,13 +8,15 @@ from selenium.webdriver.support import expected_conditions as EC
 from const.config import yellow_dust_url, chrome_driver
 from const.data_cache import get_date_last_yellow_dust, last_yellow_dust
 from domain.update_cache import set_yellow_dust_cache
+from domain.yellow_dust.yellow_dust_grade_type import YellowDustGradeType
+from grade_type import GradeType
 from utils.log import logger
 
 
-def get() -> int:
+def get() -> GradeType:
     if __check_not_have_to_get_data():
         logger.info("not have to update data : yellow_dust")
-        return last_yellow_dust.value
+        return YellowDustGradeType.check_grade(last_yellow_dust.value)
 
     driver = __get_chrome_driver()
     now_datetime, value = __get_yellow_dust_data_with_crowl(driver)
@@ -23,7 +25,7 @@ def get() -> int:
 
     driver.quit()
 
-    return int(value)
+    return YellowDustGradeType.check_grade(last_yellow_dust.value)
 
 
 def __get_chrome_driver() -> WebDriver:

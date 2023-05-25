@@ -4,9 +4,19 @@ from domain.yellow_dust import get as get_yellow_dust
 from domain.cold import get as get_cold
 
 
-def update_data():
-    get_covid.get()
-    get_air_quality.get()
-    get_yellow_dust.get()
-    get_cold.learn()
+def update_data() -> (int, bool):
+    grade_sum = 0
 
+    grade_sum += get_covid.get().value
+
+    pm10_grade, pm25_grade = get_air_quality.get()
+    grade_sum += pm10_grade
+    grade_sum += pm25_grade
+
+    grade_sum += get_yellow_dust.get().value
+    grade_sum += get_cold.get().value
+
+    if grade_sum >= 30:
+        return grade_sum, True
+    else:
+        return grade_sum, False
