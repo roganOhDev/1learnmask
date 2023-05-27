@@ -24,12 +24,15 @@ with app.app_context():
 
 @app.route('/')
 def hello_world():  # put application's code here
-    grade, mask = update_data()
+    cold_grade, pm10_grade, pm25_grade, yellow_dust_grade, cold_grade, grade, mask = update_data()
     logger.info("getting data is done!")
 
     covid_graph_data, air_quality_graph_data = get_data()
 
-    response = json.dumps({'grade': grade, 'mask': mask, 'covid_graph_data': covid_graph_data, 'air_quality_graph_data': air_quality_graph_data})
+    response = json.dumps(
+        {'grade': grade, 'mask': mask, 'cold_grade': cold_grade, 'pm10_grade': pm10_grade, 'pm25_grade': pm25_grade,
+         'yellow_dust_grade': yellow_dust_grade, 'cold_grade': cold_grade, 'covid_graph_data': covid_graph_data,
+         'air_quality_graph_data': air_quality_graph_data})
     return response
 
 
