@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1learnMask</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script>
+    var jsonData = JSON.parse('{{ data|safe }}');
+    console.log("코로나",jsonData.covid_grade);
+    console.log("감기",jsonData.cold_grade);
+    console.log("미세",jsonData.pm10_grade);
+    console.log("초미세",jsonData.pm25_grade);
+    console.log("황사",jsonData.yellow_dust_grade);
+    console.log("총합",jsonData.grade);
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <img class="myimg" src="https://img.freepik.com/free-vector/illustration-of-medical-mask_23-2148485666.jpg?w=2000">
+
+  <div class="class1">
+    <p style="line-height:50px;">
+      <script>
+        var class1 = document.querySelector('.class1');
+        if (jsonData.mask) {
+          document.write("Mask on");
+          class1.style.backgroundColor = 'pink';
+        } else {
+          document.write("Mask off");
+          class1.style.backgroundColor = 'rgb(207, 255, 207)';
+        }
+      </script>
+    </p>
+  </div>
+  <table border="1" bordercolor="black" width="500" height="50px" align="center">
+    <tr>
+      <td id="covid">코로나</td>
+      <td id="yellowDust">황사</td>
+      <td id="pm10">미세</td>
+      <td id="pm25">초미세</td>
+      <td id="cold">감기</td>
+    </tr>
+  </table>
+  
+
+
+  <div class="canvas1">
+    <canvas id="chart1"></canvas>
+  </div>
+
+  <div class="canvas2">
+    <canvas id="chart2"></canvas>
+  </div>
+
+  <div class="canvas3">
+    <canvas id="chart3"></canvas>
+  </div>
+
+</body>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</html>

@@ -1,0 +1,49 @@
+.myimg {
+  margin:auto;
+  margin-top:10px;
+  margin-bottom:0px;
+  display:block;
+  width:300px;
+}
+
+.class1 {
+  font-size:34px;
+  margin-top:0;
+  margin-bottom:150px;
+  margin:auto;
+  width:150px;
+  height:50px;
+  outline:solid 1px black;
+}
+
+.canvas1 {
+  width: 500px;
+  float: left;
+  margin-left: 430px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.canvas2 {
+  width: 500px;
+  float: right;
+  margin-right: 430px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.canvas3 {
+  clear: both;
+  width: 500px;
+  margin: 30px auto;
+}
+
+
+p {
+  text-align:center;
+}
+
+table td {
+  text-align: center;
+  font-size: 30px;
+}
