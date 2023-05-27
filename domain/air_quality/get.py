@@ -13,6 +13,16 @@ from utils.log import logger
 from utils.time_utils import string_to_datetime_air_quality
 
 
+def get_2_days_data():
+    today = datetime.datetime.today()
+    before_2_days = today - datetime.timedelta(days=2)
+
+    data = [(element._data[0].dataTime, element._data[0].pm10Value, element._data[0].pm25Value) for element in
+            AirQuality.get_2_days_data(str(before_2_days))]
+
+    return data
+
+
 def get() -> (int, int):
     if __check_not_have_to_get_data():
         logger.info("not have to update data : air_quality")
@@ -31,7 +41,6 @@ def get() -> (int, int):
     pm25_grade = FineAirQualityGradeType.check_grade(pm25)
 
     return pm10_grade.value, pm25_grade.value
-
 
 
 def __connect_api():
@@ -66,7 +75,7 @@ def __create_data(now_data, now_data_time: datetime.datetime):
     if now_data_time > get_datetime_last_air_quality_datetime():
         log.logger.info("air quality new data : " + now_data.get('dataTime') + " , (air_quality)")
         AirQuality(now_data.get('dataTime'), now_data.get('pm10Value'), now_data.get('pm25Value')).save()
-        #sorting 필요
+        # sorting 필요
 
 
 def __check_not_have_to_get_data() -> bool:

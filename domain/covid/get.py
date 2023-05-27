@@ -13,6 +13,13 @@ from grade_type import GradeType
 from utils import log
 from utils.log import logger
 
+def get_30_days_data():
+    today = datetime.date.today()
+    before_30_days = today - datetime.timedelta(days=30)
+
+    data = [(element._data[0].date, element._data[0].value) for element in Covid.get_30_days_data(str(before_30_days))]
+    return data
+
 
 def get() -> GradeType:
     if __check_not_have_to_get_data():

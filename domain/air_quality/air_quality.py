@@ -29,3 +29,9 @@ class AirQuality(Base):
         db = next(get_db())
         stmt = select(AirQuality).order_by(desc(AirQuality.dataTime))
         return db.execute(stmt).fetchone()
+
+    @staticmethod
+    def get_2_days_data(datetime: str):
+        db = next(get_db())
+        stmt = select(AirQuality).where(AirQuality.dataTime >= datetime).order_by(desc(AirQuality.dataTime))
+        return db.execute(stmt).fetchall()

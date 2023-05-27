@@ -1,6 +1,8 @@
+import json
+
 from flask import Flask
 
-from domain.update_data import update_data
+from domain.update_data import update_data, get_data
 from utils.log import logger
 from apscheduler.schedulers.background import BackgroundScheduler
 from utils.updateschedule import job
@@ -25,13 +27,10 @@ def hello_world():  # put application's code here
     grade, mask = update_data()
     logger.info("getting data is done!")
 
-    mask_string = ""
-    if mask:
-        mask_string = "True"
-    else:
-        mask_string = "False"
+    covid_graph_data, air_quality_graph_data = get_data()
 
-    return "grade : " + str(grade) + ", mask : " + mask_string
+    response = json.dumps({'grade': grade, 'mask': mask, 'covid_graph_data': covid_graph_data, 'air_quality_graph_data': air_quality_graph_data})
+    return response
 
 
 if __name__ == '__main__':

@@ -37,3 +37,9 @@ class Covid(Base):
         db = next(get_db())
         stmt = select(Covid).where(Covid.date == date)
         return db.execute(stmt).fetchone()
+
+    @staticmethod
+    def get_30_days_data(date: str):
+        db = next(get_db())
+        stmt = select(Covid).where(Covid.date >= date)
+        return db.execute(stmt).fetchall()

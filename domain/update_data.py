@@ -3,6 +3,11 @@ from domain.air_quality import get as get_air_quality
 from domain.yellow_dust import get as get_yellow_dust
 from domain.cold import get as get_cold
 
+def get_data():
+    covid_data = get_covid.get_30_days_data()
+    air_quality_data = get_air_quality.get_2_days_data()
+
+    return covid_data, air_quality_data
 
 def update_data() -> (int, bool):
     grade_sum = 0
