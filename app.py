@@ -1,5 +1,5 @@
 import json
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template
 
 from domain.update_data import update_data, get_data
 from utils.log import logger
@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 sched = BackgroundScheduler(daemon=True)
 sched.add_job(job, 'cron', minute='5')
-# sched.add_job(job, 'interval', seconds=30)
+# sched.add_job(job, 'interval', seconds=40)
 sched.start()
 
 with app.app_context():    
