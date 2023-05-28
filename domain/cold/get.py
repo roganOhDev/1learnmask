@@ -110,8 +110,8 @@ def learn() -> int:
 
 
 def get() -> GradeType:
-    learn()
-    return __check_grade(data_cache.last_cold_value)
+    cold_value = learn()
+    return __check_grade(cold_value)
 
 
 def __check_grade(value: int) -> GradeType:

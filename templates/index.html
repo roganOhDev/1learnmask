@@ -11,8 +11,8 @@
     var jsonData = JSON.parse('{{ data|safe }}');
     console.log("코로나",jsonData.covid_grade);
     console.log("감기",jsonData.cold_grade);
-    console.log("미세",jsonData.pm10_grade);
-    console.log("초미세",jsonData.pm25_grade);
+    console.log("미세",jsonData.pm25_grade);
+    console.log("초미세",jsonData.pm10_grade);
     console.log("황사",jsonData.yellow_dust_grade);
     console.log("총합",jsonData.grade);
   </script>

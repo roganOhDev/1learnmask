@@ -4,10 +4,8 @@ import requests
 
 from const.data_cache import get_datetime_last_air_quality_datetime
 from domain.air_quality.air_quality import AirQuality
-from domain.air_quality.air_quality_grade_type import AirQualityGradeType
 from domain.air_quality.fine_air_quality_grade_type import FineAirQualityGradeType
 from domain.update_cache import set_datetime_last_air_quality_datetime
-from grade_type import GradeType
 from utils import log
 from utils.log import logger
 from utils.time_utils import string_to_datetime_air_quality

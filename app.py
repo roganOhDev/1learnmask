@@ -9,7 +9,7 @@ from utils.updateschedule import job
 app = Flask(__name__)
 
 sched = BackgroundScheduler(daemon=True)
-sched.add_job(job, 'cron', minute='7')
+sched.add_job(job, 'cron', minute='5')
 # sched.add_job(job, 'interval', seconds=30)
 sched.start()
 
