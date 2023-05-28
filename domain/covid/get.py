@@ -1,17 +1,20 @@
 import datetime
 
+from selenium.webdriver.chrome import webdriver
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from const.config import covid_url, chrome_driver
+from const.config import covid_url, service, options
 from const.data_cache import get_date_last_covid
 from domain.covid.covid import Covid
 from domain.update_cache import __set_date_last_covid_date
 from grade_type import GradeType
 from utils import log
 from utils.log import logger
+from selenium import webdriver
+
 
 def get_30_days_data():
     today = datetime.date.today()
@@ -63,18 +66,25 @@ def cnt_week_doubling() -> bool:
         return False
 
 
-def is_week_doubling(today: datetime.date) -> bool:
-    last_week = today - datetime.timedelta(weeks=1)
+def is_week_doubling(date: datetime.date) -> bool:
+    last_week = date - datetime.timedelta(weeks=1)
     last_week_string = str(last_week)
-    today_string = str(today)
-    aa = Covid.get_by_date(last_week_string)._data[0]
+    today_string = str(date)
     last_week_value = Covid.get_by_date(last_week_string)._data[0].value
-    today_value = Covid.get_by_date(today_string)._data[0].value
+    today_value_json = Covid.get_by_date(today_string)
 
+    if today_value_json == None:
+        date_string = str(date - datetime.timedelta(days=7))
+        last_week_string = str(date - datetime.timedelta(days=14))
+        last_week_value = Covid.get_by_date(last_week_string)._data[0].value
+        today_value_json = Covid.get_by_date(date_string)
+
+    today_value = today_value_json._data[0].value
     return today_value >= 2 * last_week_value
 
 
 def __get_chrome_driver() -> WebDriver:
+    chrome_driver = webdriver.Chrome(service=service, options=options)
     chrome_driver.get(covid_url)
 
     return chrome_driver

@@ -1,16 +1,18 @@
 import datetime
 
+from selenium.webdriver.chrome import webdriver
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from const.config import yellow_dust_url, chrome_driver
+from const.config import yellow_dust_url, service, options
 from const.data_cache import get_date_last_yellow_dust, last_yellow_dust
 from domain.update_cache import set_yellow_dust_cache
 from domain.yellow_dust.yellow_dust_grade_type import YellowDustGradeType
 from grade_type import GradeType
 from utils.log import logger
+from selenium import webdriver
 
 
 def get() -> GradeType:
@@ -29,6 +31,7 @@ def get() -> GradeType:
 
 
 def __get_chrome_driver() -> WebDriver:
+    chrome_driver = webdriver.Chrome(service=service, options=options)
     chrome_driver.get(yellow_dust_url)
 
     return chrome_driver
