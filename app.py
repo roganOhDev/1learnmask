@@ -40,4 +40,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run(debug=True) #debug=True 는 실시간 html 변화 보려고 넣음.
+    app.run(host='0.0.0.0', port=9900, debug=True) #debug=True 는 실시간 html 변화 보려고 넣음.

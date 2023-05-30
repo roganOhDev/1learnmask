@@ -1,49 +1,307 @@
-.myimg {
+@font-face {
+  font-family: 'TTTtangsbudaejjigaeB';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/TTTtangsbudaejjigaeB.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family:'bitbit';
+  src:url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff'),url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2') ;
+}
+@font-face {
+  font-family: 'SUITE-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: '양진체';
+  src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+html { 
+  scroll-behavior: smooth; 
+} 
+.title {
+  text-align:center;
   margin:auto;
-  margin-top:10px;
-  margin-bottom:0px;
-  display:block;
-  width:300px;
 }
-
-.class1 {
-  font-size:34px;
-  margin-top:0;
-  margin-bottom:150px;
+.scroll-container{
+  scroll-behavior: smooth;
+  display: block;
+  text-align:center;
   margin:auto;
-  width:150px;
-  height:50px;
-  outline:solid 1px black;
+  overflow-y: scroll;
+  width: 350px;
+  height: 250px;
 }
-
-.canvas1 {
-  width: 500px;
-  float: left;
-  margin-left: 430px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+section#sec1{
+/*   background-color: darkgoldenrod; */
+  position:relative;
+  width:50%;
+  left:50%;
+  transform: translate(-50%,5%);
 }
-
-.canvas2 {
-  width: 500px;
-  float: right;
-  margin-right: 430px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+section#sec2{
+/*   background-color: darkgray; */
+  position:relative;
+  left:50%;
+  width:50%;
+  height:500px;
+  margin-top:8%;
+  transform: translate(-50%,0%);
 }
-
-.canvas3 {
-  clear: both;
-  width: 500px;
-  margin: 30px auto;
+section#sec3{
+/*   background-color: darkgray; */
+  position:relative;
+  left:50%;
+  width:50%;
+  height:500px;
+  transform: translate(-50%,0%);
 }
-
-
-p {
+section#sec4{
+/*   background-color: darkgray; */
+  position:relative;
+  left:50%;
+  width:50%;
+  height:500px;
+  transform: translate(-50%,0%);
+}
+section#sec5{
+/*   background-color: darkgray; */
+  position:relative;
+  left:50%;
+  width:50%;
+  height:500px;
+  transform: translate(-50%,0%);
+}
+div#div1-1{
+  /* font-family: 'TTTtangsbudaejjigaeB'; */
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:48px;
+  color:#035aa3;
   text-align:center;
 }
+div#div1-2{
+  height:100px;
+  font-family: 'bitbit';
+  font-size:122px;
+  text-align:center;
+  display:flex;
+  justify-content:center;
+}
+div#div1-3{
+  /* background-color:red; */
+  width:100%;
+  position:relative;
+  left:50%;
+  transform: translate(-50%,0%);
+  font-family: 'SUITE-Regular';
+  font-size:30px;
+  text-align:center;
+}
+div#div1-4{
+  /* background-color:black; */
+  width:17%;
+  height:30px;
+  font-family: 'SUITE-Regular';
+  font-size:25px;
+  position:relative;
+  left:50%;
+  transform: translate(-50%,30%);
+  display:flex;
+  justify-content:center;
+  color:#0264b3;
+  cursor:pointer;
+}
+div#div1-5{
+  background-color:#219adf;
+  width:90%;
+  height:140px;
+  box-sizing:border-box;
+  position:relative;
+  transform: translate(-50%,0%);
+  left:50%;
+  margin-top:3%;
+  border-radius: 70px;
+}
+div#div2-1{
+  float:left;
+  position:relative;
+  width:50%;
+  height:500px;
+  background-size: cover;
+  background-position: center;
+}
+div#div3-1{
+  float:left;
+  position:relative;
+  width:50%;
+  height:500px;
+  background-size: cover;
+  background-position: center;
+}
+div#div4-1{
+  float:left;
+  position:relative;
+  width:50%;
+  height:500px;
+  background-size: cover;
+  background-position: center;
+}
+div#div5-1{
+  float:left;
+  position:relative;
+  width:50%;
+  height:500px;
+  background-size: cover;
+  background-position: center;
+}
+div#div6-1{
+  float:left;
+  position:relative;
+  width:50%;
+  height:500px;
+  background-size: cover;
+  background-position: center;
+}
+div#chart1{
+  float:left;
+  width:50%;
+  height:500px;
+ /*  background-color:black; */
+}
+div#chart2{
+  float:left;
+  width:50%;
+  height:500px;
+  /* background-color:black; */
+}
+div#chart3{
+  float:left;
+  width:50%;
+  height:500px;
+  /* background-color:black; */
+}
+#chart11{
+  position:relative;
+  height:300px;
+  margin-left:10%;
+  margin-top:5%;
+  background-color:rgba(179, 179, 179, 0.5);
+  border-radius: 30px;
+}
+#chart22{
+  position:relative;
+  height:300px;
+  margin-left:10%;
+  margin-top:5%;
+  background-color:rgba(179, 179, 179, 0.5);
+  border-radius: 30px;
+}
+#chart33{
+  position:relative;
+  height:300px;
+  margin-left:10%;
+  margin-top:5%;
+  background-color:rgba(179, 179, 179, 0.5);
+  border-radius: 30px;
+}
+p#p1{
+  margin-top:0;
+  color:#0263b5;
+  margin-right:25px;
+  margin-bottom:0;
+}
+p#p2{
+  margin-top:0;
+  color:#219adf;
+  margin-bottom:0;
+}
+p#p3{
+  color:#6a6a6a;
+  margin-bottom:0;
+}
+p#p4{
+  margin-top:0;
+  color:#0164b2;
+  margin-bottom:auto;
+}
+p#p5{
+  margin-top:0;
+  margin-right:0;
+  color:#0164b2;
+}
+p#p6{
+  margin-top:0;
+  margin-right:0;
+  color:white;
+  font-family: 'Noto Sans KR', sans-serif;
+  text-align:center;
+  font-size:85px;
+}
+p#s1{
+  color:white;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:37px;
+  text-align:center;
+  padding-top:71.5%;
+}
+p#s2{
+  color:white;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:37px;
+  text-align:center;
+  padding-top:71.5%;
+}
+p#s3{
+  color:white;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:37px;
+  text-align:center;
+  padding-top:71.5%;
+}
+p#s4{
+  color:white;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:37px;
+  text-align:center;
+  padding-top:71.5%;
+}
+p#s5{
+  color:white;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:37px;
+  text-align:center;
+  padding-top:71.5%;
+}
 
-table td {
-  text-align: center;
-  font-size: 30px;
+.icon1{
+  margin-top:50%;
+  margin:auto;
+}
+.refresh{
+  margin-left:0;
+  margin:auto;
+}
+.down{
+  position:absolute;
+  left:50%;
+  transform: translate(-50%,100%);
+}
+.down2{
+  /* background-color:red; */
+  position:absolute;
+  left:50%;
+  padding-top:48%;
+  transform: translate(-50%,0%);
+}
+.information{
+  width:100%;
+  padding-left:7%;
+  padding-top:10%;
+}
+#down3 {
+  transform:roate(180deg);
 }

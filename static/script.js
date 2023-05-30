@@ -1,99 +1,209 @@
-var boolchart1 = (jsonData.pm25_grade>=15);
-var boolchart2 = (jsonData.pm10_grade>=15);
-var boolchart3 = (jsonData.covid_grade>=15); // chart1,2,3 색 지정
+var pm10 = jsonData.pm10_grade;
+var pm25 = jsonData.pm25_grade;
+var covid = jsonData.covid_grade;
+var cold = jsonData.cold_grade;
+var yellow = jsonData.yellow_dust_grade;
+var grade = jsonData.grade;
 
-// 배경색 변수 선언
-var pinkColor = 'pink';
-var greenColor = 'rgb(207, 255, 207)';
+var masktext = '';
+var pm10text = '';
+var pm25text = '';
+var covidtext = '';
+var coldtext = '';
+var yellowtext = '';
 
-var covidElement = document.getElementById('covid');
-var yellowDustElement = document.getElementById('yellowDust');
-var pm10Element = document.getElementById('pm10');
-var pm25Element = document.getElementById('pm25');
-var coldElement = document.getElementById('cold');
-
-covidElement.style.backgroundColor = jsonData.covid_grade >= 15 ? pinkColor : greenColor;
-yellowDustElement.style.backgroundColor = jsonData.yellow_dust_grade >= 15 ? pinkColor : greenColor;
-pm10Element.style.backgroundColor = jsonData.pm10_grade >= 15 ? pinkColor : greenColor;
-pm25Element.style.backgroundColor = jsonData.pm25_grade >= 15 ? pinkColor : greenColor;
-coldElement.style.backgroundColor = jsonData.cold_grade >= 15 ? pinkColor : greenColor;
-
-jsonData.air_quality_graph_data.reverse();
-
-// chart1 배경색 설정
-var canvas1 = document.querySelector('.canvas1');
-canvas1.style.backgroundColor = boolchart1 ? pinkColor : greenColor;
-
-// chart2 배경색 설정
-var canvas2 = document.querySelector('.canvas2');
-canvas2.style.backgroundColor = boolchart2 ? pinkColor : greenColor;
-
-// chart3 배경색 설정
-var canvas3 = document.querySelector('.canvas3');
-canvas3.style.backgroundColor = boolchart3 ? pinkColor : greenColor;
-
-// air quality 차트
-const ctx1 = document.getElementById('chart1');
-const lineChart1 = new Chart(ctx1, {
-  type: 'line',
-  data: {
-    labels: jsonData.air_quality_graph_data.map(item => item[0]),
-    datasets: [{
-      label: '초미세먼지',
-      data: jsonData.air_quality_graph_data.map(item => item[2]),
-      borderWidth: 1
-    }]
-  },
-  options: {
-    responsive: true,
-    scales: {
-      y: {
-        min: 0
-      }
-    }
-  }
+window.onload = function() {
+  // 페이지 로드 후 실행할 작업들을 여기에 작성합니다.
+  // 예: 이미지 보여주기 함수 호출
+  logcheck();
+  pm10image();
+  pm25image();
+  covidimage();
+  coldimage();
+  yellowimage();
+  drawchart();
+};
+window.addEventListener('DOMContentLoaded', function() {
+/*   var chart1 = document.getElementById('chart1');
+  var canvas = document.getElementById('chart11');
+  canvas.width = chart1.offsetWidth;
+  canvas.height = chart1.offsetHeight;
+  var chart2 = document.getElementById('chart2');
+  var canvas = document.getElementById('chart22');
+  canvas.width = chart2.offsetWidth;
+  canvas.height = chart2.offsetHeight;
+  var chart3 = document.getElementById('chart3');
+  var canvas = document.getElementById('chart33');
+  canvas.width = chart3.offsetWidth;
+  canvas.height = chart3.offsetHeight; */
+  var canvas = document.getElementById('chart11');
+  canvas.height = 250;
+  var canvas = document.getElementById('chart22');
+  canvas.height = 250;
+  var canvas = document.getElementById('chart33');
+  canvas.height = 250;
 });
 
-// pm10 차트
-const ctx2 = document.getElementById('chart2');
-const lineChart2 = new Chart(ctx2, {
-  type: 'line',
-  data: {
-    labels: jsonData.air_quality_graph_data.map(item => item[0]),
-    datasets: [{
-      label: '미세먼지',
-      data: jsonData.air_quality_graph_data.map(item => item[1]),
-      borderWidth: 1
-    }]
-  },
-  options: {
-    responsive: true,
-    scales: {
-      y: {
-        min: 0
-      }
-    }
+function logcheck() {
+  console.log("코로나",jsonData.covid_grade);
+  console.log("감기",jsonData.cold_grade);
+  console.log("미세",jsonData.pm10_grade);
+  console.log("초미세",jsonData.pm25_grade);
+  console.log("황사",jsonData.yellow_dust_grade);
+  console.log("총합",jsonData.grade);
+  if(grade>=30) {
+    masktext = "MASK ON";
   }
-});
+  else {
+    masktext = "MASK OFF"
+  }
+  document.getElementById("p6").textContent = masktext;
+}
 
-// COVID-19 차트
-const ctx3 = document.getElementById('chart3');
-const lineChart3 = new Chart(ctx3, {
-  type: 'line',
-  data: {
-    labels: jsonData.covid_graph_data.map(item => item[0]),
-    datasets: [{
-      label: '코로나',
-      data: jsonData.covid_graph_data.map(item => item[1]),
-      borderWidth: 1
-    }]
-  },
-  options: {
-    responsive: true,
-    scales: {
-      y: {
-        min: 0
+function pm10image() {
+  if (pm10 < 7) {
+    document.getElementById("div2-1").style.backgroundImage = "url('static/img/good.png')";
+    pm10text = "미세먼지가 좋음입니다";
+  } else if (pm10 < 15) {
+    document.getElementById("div2-1").style.backgroundImage = "url('static/img/soso.png')";
+    pm10text = "미세먼지가 보통입니다";
+  } else if (pm10 < 30) {
+    document.getElementById("div2-1").style.backgroundImage = "url('static/img/bad.png')";
+    pm10text = "미세먼지가 나쁨입니다";
+  } else {
+    document.getElementById("div2-1").style.backgroundImage = "url('static/img/sobad.png')";
+    pm10text = "미세먼지가 매우나빠요";
+  }
+  document.getElementById("s1").textContent = pm10text;
+}
+function pm25image() {
+  if (pm25 < 7) {
+    document.getElementById("div3-1").style.backgroundImage = "url('static/img/good.png')";
+    pm25text = "초미세먼지가 좋음입니다";
+  } else if (pm25 < 15) {
+    document.getElementById("div3-1").style.backgroundImage = "url('static/img/soso.png')";
+    pm25text = "초미세먼지가 보통입니다";
+  } else if (pm25 < 30) {
+    document.getElementById("div3-1").style.backgroundImage = "url('static/img/bad.png')";
+    pm25text = "초미세먼지가 나쁨입니다";
+  } else {
+    document.getElementById("div3-1").style.backgroundImage = "url('static/img/sobad.png')";
+    pm25text = "초미세먼지가 매우나빠요";
+  }
+  document.getElementById("s2").textContent = pm25text;
+}
+function covidimage() {
+  if (covid < 7) {
+    document.getElementById("div4-1").style.backgroundImage = "url('static/img/good.png')";
+    covidtext = "코로나가 좋음입니다";
+  } else if (covid < 15) {
+    document.getElementById("div4-1").style.backgroundImage = "url('static/img/soso.png')";
+    covidtext = "코로나가 보통입니다";
+  } else if (covid < 30) {
+    document.getElementById("div4-1").style.backgroundImage = "url('static/img/bad.png')";
+    covidtext = "코로나가 나쁨입니다";
+  } else {
+    document.getElementById("div4-1").style.backgroundImage = "url('static/img/sobad.png')";
+    covidtext = "코로나가 매우나빠요";
+  }
+  document.getElementById("s3").textContent = covidtext;
+}
+function coldimage() {
+  if (cold < 7) {
+    document.getElementById("div5-1").style.backgroundImage = "url('static/img/good.png')";
+    coldtext = "독감이 좋음입니다";
+  } else if (cold < 15) {
+    document.getElementById("div5-1").style.backgroundImage = "url('static/img/soso.png')";
+    coldtext = "독감이 보통입니다";
+  } else if (cold < 30) {
+    document.getElementById("div5-1").style.backgroundImage = "url('static/img/bad.png')";
+    coldtext = "독감이 나쁨입니다";
+  } else {
+    document.getElementById("div5-1").style.backgroundImage = "url('static/img/sobad.png')";
+    coldtext = "독감이 매우나빠요";
+  }
+  document.getElementById("s4").textContent = coldtext;
+}
+function yellowimage() {
+  if (yellow < 7) {
+    document.getElementById("div6-1").style.backgroundImage = "url('static/img/good.png')";
+    yellowtext = "황사가 좋음입니다";
+  } else if (yellow < 15) {
+    document.getElementById("div6-1").style.backgroundImage = "url('static/img/soso.png')";
+    yellowtext = "황사가 보통입니다";
+  } else if (yellow < 30) {
+    document.getElementById("div6-1").style.backgroundImage = "url('static/img/bad.png')";
+    yellowtext = "황사가 나쁨입니다";
+  } else {
+    document.getElementById("div6-1").style.backgroundImage = "url('static/img/sobad.png')";
+    yellowtext = "황사가 매우나빠요";
+  }
+  document.getElementById("s5").textContent = yellowtext;
+}
+
+function drawchart() {
+  // 미세먼지 차트
+  jsonData.air_quality_graph_data.reverse();
+  const ctx1 = document.getElementById('chart11');
+  const lineChart1 = new Chart(ctx1, {
+    type: 'line',
+    data: {
+      labels: jsonData.air_quality_graph_data.map(item => item[0]),
+      datasets: [{
+        label: '미세먼지',
+        data: jsonData.air_quality_graph_data.map(item => item[1]),
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          min: 0
+        }
       }
     }
-  }
-});
+  });
+  // 초미세먼지 차트
+  const ctx2 = document.getElementById('chart22');
+  const lineChart2 = new Chart(ctx2, {
+    type: 'line',
+    data: {
+      labels: jsonData.air_quality_graph_data.map(item => item[0]),
+      datasets: [{
+        label: '초미세먼지',
+        data: jsonData.air_quality_graph_data.map(item => item[2]),
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          min: 0
+        }
+      }
+    }
+  });
+  // 코로나 차트
+  const ctx3 = document.getElementById('chart33');
+  const lineChart3 = new Chart(ctx3, {
+    type: 'line',
+    data: {
+      labels: jsonData.covid_graph_data.map(item => item[0]),
+      datasets: [{
+        label: '코로나',
+        data: jsonData.covid_graph_data.map(item => item[1]),
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          min: 0
+        }
+      }
+    }
+  });
+}
