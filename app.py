@@ -1,5 +1,5 @@
 import json
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 from domain.update_data import update_data, get_data
 from utils.log import logger
@@ -21,6 +21,8 @@ with app.app_context():
 
 @app.route('/')
 def hello_world():
+    user_agent = request.user_agent.string
+    
     covid_grade, pm10_grade, pm25_grade, yellow_dust_grade, cold_grade, grade, mask = update_data()
     logger.info("getting data is done!")
 
@@ -36,6 +38,10 @@ def hello_world():
         'covid_graph_data': covid_graph_data,
         'air_quality_graph_data': air_quality_graph_data
     }
+    if "Mobile" in user_agent or "Android" in user_agent:
+        return render_template("mobile.html")
+    else:
+        return render_template('index.html', data=json.dumps(response))
     return render_template('index.html', data=json.dumps(response))
 
 

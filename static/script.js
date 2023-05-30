@@ -12,6 +12,10 @@ var covidtext = '';
 var coldtext = '';
 var yellowtext = '';
 
+function isMobileDevice() {
+  return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+}
+
 window.onload = function() {
   // 페이지 로드 후 실행할 작업들을 여기에 작성합니다.
   // 예: 이미지 보여주기 함수 호출
