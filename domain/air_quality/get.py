@@ -73,7 +73,6 @@ def __create_data(now_data, now_data_time: datetime.datetime):
     if now_data_time > get_datetime_last_air_quality_datetime():
         log.logger.info("air quality new data : " + now_data.get('dataTime') + " , (air_quality)")
         AirQuality(now_data.get('dataTime'), now_data.get('pm10Value'), now_data.get('pm25Value')).save()
-        # sorting 필요
 
 
 def __check_not_have_to_get_data() -> bool:

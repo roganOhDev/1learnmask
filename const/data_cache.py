@@ -7,6 +7,7 @@ last_covid_date: str = ""
 last_air_quality_datetime = ""
 last_yellow_dust = YellowDust()
 last_cold_value = 0
+dust_sensor_value = 0
 last_cold_date = datetime.date.min
 
 

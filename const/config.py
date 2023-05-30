@@ -19,8 +19,10 @@ version = RunVersion.demo
 # arduino
 # port = "COM3"
 # port = "/dev/cu.Bluetooth-Incoming-Port"
-port = "/dev/cu.usbmodem1101"
+port_for_dust = "/dev/cu.usbmodem1101"
+port_for_ultra_sonic = "/dev/cu.usbmodem1101"
 baudrate = 9600
+timeout = 2
 
 # chrome driver
 current_dir = os.path.dirname(os.path.abspath(__file__))

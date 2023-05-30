@@ -1,17 +1,25 @@
 import json
 from flask import Flask, render_template
 
+from domain.sensor.dust import get_dust_data_job
+from domain.sensor.ultra_sonic import ultra_sonic
 from domain.update_data import update_data, get_data
 from utils.log import logger
 from apscheduler.schedulers.background import BackgroundScheduler
 from utils.updateschedule import job
+import threading
 
 app = Flask(__name__)
 
 sched = BackgroundScheduler(daemon=True)
 sched.add_job(job, 'cron', minute='5')
+sched.add_job(get_dust_data_job, 'cron', minute='10')
 # sched.add_job(job, 'interval', seconds=40)
+
 sched.start()
+
+ultra_sonic_thread = threading.Thread(target=ultra_sonic)
+ultra_sonic_thread.start()
 
 with app.app_context():    
     from domain import update_cache

@@ -16,10 +16,6 @@ void setup(){
   Serial.begin(9600);
   pinMode(sensor_led, OUTPUT);
   pinMode(4, OUTPUT);
-
-  pinMode(rgb_red, OUTPUT);
-  pinMode(rgb_green, OUTPUT);
-  pinMode(rgb_blue, OUTPUT);
 }
 
 void loop(){
@@ -35,34 +31,7 @@ void loop(){
 
   dustDensityug = (0.17 * (dust_value * (5.0 / 1024))-0.1) * 1000;
 
-  Serial.print("Dust Density [ug/m3]: ");
   Serial.print(dustDensityug);
 
-  if(dustDensityug <= 30.0){
-    analogWrite(rgb_red, 0);
-    analogWrite(rgb_green, 0);
-    analogWrite(rgb_blue, 255);
-    Serial.print("   ");
-    Serial.println("blue");
-   }else if(30.0 < dustDensityug && dustDensityug <= 80.0){
-     analogWrite(rgb_red, 0);
-    analogWrite(rgb_green, 255);
-    analogWrite(rgb_blue, 0);
-    Serial.print("   ");
-    Serial.println("green");
-   }else if(80.0 < dustDensityug && dustDensityug <= 150.0){
-     analogWrite(rgb_red, 255);
-    analogWrite(rgb_green, 155);
-    analogWrite(rgb_blue, 0);
-    Serial.print("   ");
-    Serial.println("yellow");
-   }else{
-     analogWrite(rgb_red, 255);
-    analogWrite(rgb_green, 0);
-    analogWrite(rgb_blue, 0);
-    Serial.print("   ");
-    Serial.println("red");
-   }
-
-   delay(2000);
+   delay(600000);
 }
