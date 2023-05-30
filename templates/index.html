@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
   <meta charset="UTF-8">
@@ -9,58 +9,102 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <script>
     var jsonData = JSON.parse('{{ data|safe }}');
-    console.log("코로나",jsonData.covid_grade);
-    console.log("감기",jsonData.cold_grade);
-    console.log("미세",jsonData.pm25_grade);
-    console.log("초미세",jsonData.pm10_grade);
-    console.log("황사",jsonData.yellow_dust_grade);
-    console.log("총합",jsonData.grade);
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;900&display=swap" rel="stylesheet"> 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
-
 <body>
-  <img class="myimg" src="https://img.freepik.com/free-vector/illustration-of-medical-mask_23-2148485666.jpg?w=2000">
+  <section id="sec1">
+    <div id="div1-1">
+      <img class="icon1" src="static/img/icon1.png" alt="icon1">
+      MASK - ON&OFF
+      <img class="icon1" src="static/img/icon1.png" alt="icon1">
+    </div>
+    <div id="div1-2">
+      <p id="p1">마스크</p>
+      <p id="p2">알리미</p>
+    </div>
+    <div id="div1-3">
+      <p id="p3">대기 오염도 측정 데이터를 통해</p>
+      <p id="p4">오늘의 마스크 착용 여부를 확인해보세요!</p>
+    </div>
+    <div id="div1-4" onclick="window.location.reload()">
+      <p id="p5">다시 확인하기</p>
+      <img class="refresh" src="static/img/refresh.png" alt="refresh">
+    </div>
+    <div id="div1-5">
+      <p id="p6">MASK ON</p>
+    </div>
+    <div class="down">
+      <a href="#sec2"><img src="static/img/arrow.png" alt="arrow"></a>
+    </div>
+  </section>
 
-  <div class="class1">
-    <p style="line-height:50px;">
-      <script>
-        var class1 = document.querySelector('.class1');
-        if (jsonData.mask) {
-          document.write("Mask on");
-          class1.style.backgroundColor = 'pink';
-        } else {
-          document.write("Mask off");
-          class1.style.backgroundColor = 'rgb(207, 255, 207)';
-        }
-      </script>
-    </p>
-  </div>
-  <table border="1" bordercolor="black" width="500" height="50px" align="center">
-    <tr>
-      <td id="covid">코로나</td>
-      <td id="yellowDust">황사</td>
-      <td id="pm10">미세</td>
-      <td id="pm25">초미세</td>
-      <td id="cold">감기</td>
-    </tr>
-  </table>
-  
+  <section id="sec2">
+    <div id="div2-1">
+      <p id="s1">
+        inputtext
+      </p>
+    </div>
+    <div id="chart1">
+      <img class="information" src="static/img/information.png" alt="information">
+      <canvas id="chart11">
+      </canvas>
+    </div>
+    <div class="down2">
+      <a href="#sec3"><img src="static/img/arrow.png" alt="arrow"></a>
+    </div>
+  </section>
 
+  <section id="sec3">
+    <div id="div3-1">
+      <p id="s2">
+        inputtext
+      </p>
+    </div>
+    <div id="chart2">
+      <img class="information" src="static/img/information.png" alt="information">
+      <canvas id="chart22">
+      </canvas>
+    </div>
+    <div class="down2">
+      <a href="#sec4"><img src="static/img/arrow.png" alt="arrow"></a>
+    </div>
+  </section>
 
-  <div class="canvas1">
-    <canvas id="chart1"></canvas>
-  </div>
+  <section id="sec4">
+    <div id="div4-1">
+      <p id="s3">
+        inputtext
+      </p>
+    </div>
+    <div id="chart3">
+      <img class="information" src="static/img/information.png" alt="information">
+      <canvas id="chart33">
+      </canvas>
+    </div>
+    <div class="down2">
+      <a href="#sec5"><img src="static/img/arrow.png" alt="arrow"></a>
+    </div>
+  </section>
 
-  <div class="canvas2">
-    <canvas id="chart2"></canvas>
-  </div>
-
-  <div class="canvas3">
-    <canvas id="chart3"></canvas>
-  </div>
-
+  <section id="sec5">
+    <div id="div5-1">
+      <p id="s4">
+        inputtext
+      </p>
+    </div>
+    <div id="div6-1">
+      <p id="s5">
+        inputtext
+      </p>
+    </div>
+    <div class="down2">
+      <a href="#sec1"><img id="down3" src="static/img/arrow.png" alt="arrow" style="transform:rotate(180deg);"></a>
+    </div>
+  </section>
 </body>
-<script src="{{ url_for('static', filename='script.js') }}"></script>
-
 </html>

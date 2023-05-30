@@ -1,5 +1,5 @@
 import json
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 from domain.sensor.dust import get_dust_data_job
 from domain.sensor.ultra_sonic import ultra_sonic
@@ -29,6 +29,8 @@ with app.app_context():
 
 @app.route('/')
 def hello_world():
+    user_agent = request.user_agent.string
+    
     covid_grade, pm10_grade, pm25_grade, yellow_dust_grade, cold_grade, grade, mask = update_data()
     logger.info("getting data is done!")
 
@@ -44,8 +46,12 @@ def hello_world():
         'covid_graph_data': covid_graph_data,
         'air_quality_graph_data': air_quality_graph_data
     }
+    if "Mobile" in user_agent or "Android" in user_agent:
+        return render_template("mobile.html")
+    else:
+        return render_template('index.html', data=json.dumps(response))
     return render_template('index.html', data=json.dumps(response))
 
 
 if __name__ == '__main__':
-    app.run(debug=True) #debug=True 는 실시간 html 변화 보려고 넣음.
+    app.run(host='0.0.0.0', port=9900, debug=True) #debug=True 는 실시간 html 변화 보려고 넣음.
