@@ -1,13 +1,15 @@
-const int echoPin = 2;
-const int trigPin = 3;
-const int redLed = 9;
-const int blueLed = 10;
+const int echoPin = 8;
+const int trigPin = 9;
+const int redPin = 5;     // 빨간색 핀
+const int greenPin = 6;  // 초록색 핀
+const int bluePin = 7;
 
 void setup() {
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
-  pinMode(blueLed, OUTPUT);
-  pinMode(redLed, OUTPUT);
+    pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
   Serial.begin(9600);
 }
 
@@ -25,19 +27,23 @@ void loop() {
   delay(10);
 
   if (Serial.available() > 0 ) {
-      char receivedChar = Serial.read();
+      receivedChar = Serial.read();
 
-      if (receivedChar == "1") {
-        digitalWrite(redLed, HIGH);
-        digitalWrite(blueLed, LOW);
-      }
-      else if (receivedChar == "0") {
-        digitalWrite(redLed, LOW);
-        digitalWrite(blueLed, HIGH);
-      }
-
+      if (receivedChar == '1') {
+        digitalWrite(redPin, HIGH);
+  digitalWrite(greenPin, LOW);
+  digitalWrite(bluePin, LOW);
     delay(3000);
+      }
+      else if (receivedChar == '0') {
+        digitalWrite(redPin, LOW);
+  digitalWrite(greenPin, LOW);
+  digitalWrite(bluePin, HIGH);
+    delay(3000);
+      }
+
     }
-     digitalWrite(redLed, LOW);
-     digitalWrite(blueLed, LOW);
+     digitalWrite(redPin, LOW);
+  digitalWrite(greenPin, LOW);
+  digitalWrite(bluePin, LOW);
 }

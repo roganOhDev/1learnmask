@@ -1,7 +1,6 @@
 import json
 from flask import Flask, render_template, request
 
-from domain.sensor.dust import get_dust_data_job
 from domain.sensor.ultra_sonic import ultra_sonic
 from domain.update_data import update_data, get_data
 from utils.log import logger
@@ -13,7 +12,6 @@ app = Flask(__name__)
 
 sched = BackgroundScheduler(daemon=True)
 sched.add_job(job, 'cron', minute='5')
-sched.add_job(get_dust_data_job, 'cron', minute='10')
 # sched.add_job(job, 'interval', seconds=40)
 
 sched.start()
@@ -50,8 +48,7 @@ def hello_world():
         return render_template("mobile.html")
     else:
         return render_template('index.html', data=json.dumps(response))
-    return render_template('index.html', data=json.dumps(response))
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=9900, debug=True) #debug=True 는 실시간 html 변화 보려고 넣음.
+    app.run(host='0.0.0.0', port=9900, debug=False, use_reloader=False) #debug=True 는 실시간 html 변화 보려고 넣음.
