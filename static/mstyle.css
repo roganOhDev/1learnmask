@@ -1,0 +1,185 @@
+@font-face {
+  font-family: 'TTTtangsbudaejjigaeB';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/TTTtangsbudaejjigaeB.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family:'bitbit';
+  src:url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff'),url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2') ;
+}
+@font-face {
+  font-family: 'SUITE-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: '양진체';
+  src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+html { 
+  scroll-behavior: smooth; 
+}
+.scroll-container{
+  scroll-behavior: smooth;
+  display: block;
+  text-align:center;
+  margin:auto;
+  overflow-y: scroll;
+  width: 350px;
+  height: 250px;
+}
+#sec1{
+/*     background-color: darkgoldenrod; */
+  position:relative;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
+#div1-1{
+  /* background-color:blue; */
+  position:relative;
+  width:100%;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:25px;
+  color:#035aa3;
+  display:flex;
+  justify-content:center;
+  margin-top:10%;
+}
+#div1-2{
+  /* background-color:red; */
+  position:relative;
+  display:flex;
+  justify-content:center;
+  color:#0263b5;
+  font-family: 'bitbit';
+  font-size:65px;
+  margin-top:7%;
+}
+#div1-3{
+  /* background-color:red; */
+  width:100%;
+  position:relative;
+  font-family: 'SUITE-Regular';
+  font-size:20px;
+  color:#6a6a6a;
+  text-align:center;
+  justify-content:center;
+  margin-top:5%;
+}
+#div1-4{
+/*   background-color:green; */
+  width:100%;
+  height:4%;
+  position:relative;
+  font-family: 'SUITE-Regular';
+  font-size:27px;
+  color:#0264b3;
+  text-align:center;
+  cursor:pointer;
+  margin-top:7%;
+}
+#div1-5{
+  background-color:#219adf;
+  width:90%;
+  height:20%;
+  box-sizing:border-box;
+  display:flex;
+  position:relative;
+  left:5%;
+  margin-top:10%;
+  border-radius: 70px;
+  color:white;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:55px;
+  padding-top:9%;
+  padding-bottom:9%;
+  justify-content:center;
+}
+.sec{
+  position:relative;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  border:1px solid blue;
+}
+.statusdiv{
+  position:relative;
+  width:100%;
+  height:50%;
+  margin:auto;
+  background-size: cover;
+  background-position: center;
+  background-color:gray;
+  border:1px solid blue;
+}
+@media only screen and (min-height: 600px) {
+  .statustext {
+    top: 60%; /* 화면 높이가 600px 이상일 때 위치 조정 */
+/*     background-color:red; */
+  }
+}
+
+@media only screen and (min-height: 700px) {
+  .statustext {
+    top: 50%; /* 화면 높이가 700px 이상일 때 위치 조정 */
+/*     background-color:blue; */
+  }
+}
+
+@media only screen and (min-height: 800px) {
+  .statustext {
+    top: 40%; /* 화면 높이가 800px 이상일 때 위치 조정 */
+/*     background-color:green; */
+  }
+}
+
+.statustext {
+  position: absolute;
+  color: white;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 30px;
+  text-align: center;
+  width: 100%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  top: 68%; /* 기본 위치 */
+}
+
+
+.icon1{
+  margin:auto;
+}
+.information{
+  position:relative;
+  margin-top:auto;
+  margin-bottom:15%;
+}
+.refresh{
+  margin:auto;
+}
+.down{
+  position:absolute;
+  top:auto;
+  bottom:1%;
+  left:50%;
+  transform: translate(-50%,0%);
+}
+.chart{
+  position:relative;
+  width:100%;
+  height:50%;
+  margin:auto;
+}
+.chartcanvas{
+  position:relative;
+  width:100%;
+  height:100%;
+  margin:auto;
+}

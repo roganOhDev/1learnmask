@@ -189,7 +189,7 @@ div#chart3{
   height:300px;
   margin-left:10%;
   margin-top:5%;
-  background-color:rgba(179, 179, 179, 0.5);
+  /* background-color:rgba(179, 179, 179, 0.5); */
   border-radius: 30px;
 }
 #chart22{
@@ -197,7 +197,7 @@ div#chart3{
   height:300px;
   margin-left:10%;
   margin-top:5%;
-  background-color:rgba(179, 179, 179, 0.5);
+  /* background-color:rgba(179, 179, 179, 0.5); */
   border-radius: 30px;
 }
 #chart33{
@@ -205,7 +205,7 @@ div#chart3{
   height:300px;
   margin-left:10%;
   margin-top:5%;
-  background-color:rgba(179, 179, 179, 0.5);
+  /* background-color:rgba(179, 179, 179, 0.5); */
   border-radius: 30px;
 }
 p#p1{

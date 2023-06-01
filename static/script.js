@@ -12,9 +12,9 @@ var covidtext = '';
 var coldtext = '';
 var yellowtext = '';
 
-function isMobileDevice() {
+/* function isMobileDevice() {
   return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-}
+} */
 
 window.onload = function() {
   // 페이지 로드 후 실행할 작업들을 여기에 작성합니다.
@@ -115,16 +115,16 @@ function covidimage() {
 function coldimage() {
   if (cold < 7) {
     document.getElementById("div5-1").style.backgroundImage = "url('static/img/good.png')";
-    coldtext = "독감이 좋음입니다";
+    coldtext = "감기가 좋음입니다";
   } else if (cold < 15) {
     document.getElementById("div5-1").style.backgroundImage = "url('static/img/soso.png')";
-    coldtext = "독감이 보통입니다";
+    coldtext = "감기가 보통입니다";
   } else if (cold < 30) {
     document.getElementById("div5-1").style.backgroundImage = "url('static/img/bad.png')";
-    coldtext = "독감이 나쁨입니다";
+    coldtext = "감기가 나쁨입니다";
   } else {
     document.getElementById("div5-1").style.backgroundImage = "url('static/img/sobad.png')";
-    coldtext = "독감이 매우나빠요";
+    coldtext = "감기가 매우나빠요";
   }
   document.getElementById("s4").textContent = coldtext;
 }
@@ -152,7 +152,14 @@ function drawchart() {
   const lineChart1 = new Chart(ctx1, {
     type: 'line',
     data: {
-      labels: jsonData.air_quality_graph_data.map(item => item[0]),
+      labels: jsonData.air_quality_graph_data.map(item => {
+        const date = new Date(item[0]);
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        return `${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day} ${hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+      }),
       datasets: [{
         label: '미세먼지',
         data: jsonData.air_quality_graph_data.map(item => item[1]),
@@ -173,7 +180,14 @@ function drawchart() {
   const lineChart2 = new Chart(ctx2, {
     type: 'line',
     data: {
-      labels: jsonData.air_quality_graph_data.map(item => item[0]),
+      labels: jsonData.air_quality_graph_data.map(item => {
+        const date = new Date(item[0]);
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        return `${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day} ${hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+      }),
       datasets: [{
         label: '초미세먼지',
         data: jsonData.air_quality_graph_data.map(item => item[2]),

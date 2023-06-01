@@ -1,14 +1,101 @@
-<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1learnMask</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>1learnMask Mobile</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='mstyle.css') }}">
+  <script>
+    var jsonData = JSON.parse('{{ data|safe }}');
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{{ url_for('static', filename='mscript.js') }}"></script>
 </head>
 <body>
-  Mobile version.
+  <section id="sec1">
+    <div id="div1-1">
+      <img class="icon1" src="static/img/icon1.png" alt="icon1">
+      <p>MASK - ON&OFF</p>
+      <img class="icon1" src="static/img/icon1.png" alt="icon1">
+    </div>
+    <div id="div1-2">
+      마스크<span style="color:#219adf">알리미</span>
+    </div>
+    <div id="div1-3">
+      대기 오염도 측정 데이터를 통해 <br>
+      <span style="color:#0164b2">오늘의 마스크 착용 여부를 확인해보세요!</span>
+    </div>
+    <div id="div1-4" onclick="window.location.reload()">
+      다시 확인하기
+      <img class="refresh" src="static/img/refresh.png" alt="refresh">
+    </div>
+    <div id="div1-5">
+      LOADING
+    </div>
+    <img class="information" src="static/img/information.png" alt="information">
+    <div class="down">
+      <a href="#sec2"><img src="static/img/arrow.png" alt="arrow"></a>
+    </div>
+  </section>
+  <section id="sec2" class="sec">
+    <div id="div1" class="statusdiv">
+      <p id="s1" class="statustext">
+        inputtext
+      </p>
+    </div>
+    <div id="chart1" class="chart">
+      <canvas id="chart11" class="chartcanvas">
+      </canvas>
+    </div>
+    <div class="down">
+      <a href="#sec3"><img src="static/img/arrow.png" alt="arrow"></a>
+    </div>
+  </section> 
+  <section id="sec3" class="sec">
+    <div id="div2" class="statusdiv">
+      <p id="s2" class="statustext">
+        inputtext
+      </p>
+    </div>
+    <div id="chart2" class="chart">
+      <canvas id="chart22" class="chartcanvas">
+      </canvas>
+    </div>
+    <div class="down">
+      <a href="#sec4"><img src="static/img/arrow.png" alt="arrow"></a>
+    </div>
+  </section>
+  <section id="sec4" class="sec">
+    <div id="div3" class="statusdiv">
+      <p id="s3" class="statustext">
+        inputtext
+      </p>
+    </div>
+    <div id="chart3" class="chart">
+      <canvas id="chart33" class="chartcanvas">
+      </canvas>
+    </div>
+    <div class="down">
+      <a href="#sec5"><img src="static/img/arrow.png" alt="arrow"></a>
+    </div>
+  </section> 
+  <section id="sec5" class="sec">
+    <div id="div4" class="statusdiv">
+      <p id="s4" class="statustext">
+        inputtext
+      </p>
+    </div>
+    <div id="div5" class="statusdiv">
+      <p id="s5" class="statustext">
+        inputtext
+      </p>
+    </div>
+    <div class="down">
+      <a href="#sec1"><img src="static/img/arrow.png" alt="arrow" style="transform:rotate(180deg);"></a>
+    </div>
+  </section> 
 </body>
 </html>
