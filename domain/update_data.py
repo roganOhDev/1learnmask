@@ -2,6 +2,7 @@ from domain.covid import get as get_covid
 from domain.air_quality import get as get_air_quality
 from domain.yellow_dust import get as get_yellow_dust
 from domain.cold import get as get_cold
+from grade_type import GradeType
 
 
 def get_data():
@@ -25,6 +26,7 @@ def update_data() -> (int, int, int, int, int, int, bool):
     grade_sum += yellow_dust_grade
 
     cold_grade = get_cold.get().value
+    cold_grade = GradeType.BAD.value
     grade_sum += cold_grade
 
     return covid_grade, pm10_grade, pm25_grade, yellow_dust_grade, cold_grade, grade_sum, grade_sum >= 30
