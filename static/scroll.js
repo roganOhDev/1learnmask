@@ -22,13 +22,30 @@ function checkScroll() {
         const elementBottom = element.getBoundingClientRect().bottom;
 
         // 화면에 요소가 보이는지 확인
-        const isVisible = elementTop < window.innerHeight && elementBottom >= 0;
+        const isVisible = elementTop < window.innerHeight - 100 && elementBottom >= 0;
 
         // 보이는 요소에 animate 클래스 추가
         if (isVisible) {
             element.classList.add('animate');
         } else {
             element.classList.remove('animate');
+        }
+    });
+
+    const downElements = document.querySelectorAll('.animation-element-down');
+
+    downElements.forEach((downElement) => {
+        const elementTop = downElement.getBoundingClientRect().top;
+        const elementBottom = downElement.getBoundingClientRect().bottom;
+
+        // 화면에 요소가 보이는지 확인
+        const isVisible = elementTop <= window.scrollY + 150;
+
+        // 보이는 요소에 animate 클래스 추가
+        if (isVisible) {
+            downElement.classList.add('animate-down');
+        } else {
+            downElement.classList.remove('animate-down');
         }
     });
 }

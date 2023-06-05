@@ -12,6 +12,7 @@ var covidtext = '';
 var coldtext = '';
 var yellowtext = '';
 
+
 /* function isMobileDevice() {
   return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 } */
@@ -228,3 +229,57 @@ function drawchart() {
     }
   });
 }
+document.querySelector('.down').addEventListener('click', function(e) {
+  e.preventDefault();
+
+  const targetElement = document.querySelector('#sec2');
+
+  window.scrollTo({
+    top: targetElement.offsetTop,
+    behavior: 'smooth'
+  });
+})
+document.querySelector('.down2').addEventListener('click', function(e) {
+  e.preventDefault();
+
+  const targetElement = document.querySelector('#sec3');
+
+  window.scrollTo({
+    top: targetElement.offsetTop,
+    behavior: 'smooth'
+  });
+});
+
+// down3 버튼
+document.querySelector('.down3').addEventListener('click', function(e) {
+  e.preventDefault();
+
+  const targetElement = document.querySelector('#sec4');
+
+  window.scrollTo({
+    top: targetElement.offsetTop,
+    behavior: 'smooth'
+  });
+});
+
+document.querySelector('.down4').addEventListener('click', function(e) {
+  e.preventDefault();
+
+  const targetElement = document.querySelector('#sec5');
+
+  window.scrollTo({
+    top: targetElement.offsetTop,
+    behavior: 'smooth'
+  });
+});
+
+document.querySelector('.down5').addEventListener('click', function(e) {
+  e.preventDefault();
+
+  const targetElement = document.querySelector('#sec1');
+
+  window.scrollTo({
+    top: targetElement.offsetTop,
+    behavior: 'smooth'
+  });
+});

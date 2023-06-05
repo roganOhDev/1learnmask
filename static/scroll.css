@@ -8,3 +8,14 @@
     opacity: 3;
     transform: translateY(0);
 }
+
+.animation-element-down {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 2s ease, transform 2s ease;
+}
+
+.animation-element-down.animate-down {
+    opacity: 3;
+    transform: translateY(0);
+}

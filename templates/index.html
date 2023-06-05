@@ -19,7 +19,7 @@
   <script src="{{ url_for('static', filename='scroll.js') }}"></script>
 </head>
 <body>
-  <section id="sec1" class="animation-element">
+  <section id="sec1">
     <div id="div1-1">
       <img class="icon1" src="../static/img/icon1.png" alt="icon1">
       MASK - ON&OFF
@@ -40,12 +40,12 @@
     <div id="div1-5">
       <p id="p6">MASK ON</p>
     </div>
-    <div class="down">
-      <a href="#sec2"><img src="../static/img/arrow.png" alt="arrow"></a>
+    <div class="down" class="animation-element">
+      <a href="#sec2"><img src="../static/img/arrow.png" alt="arrow" class="animation-element"></a>
     </div>
   </section>
 
-  <section id="sec2" class="animation-element">
+  <section id="sec2">
     <div id="div2-1" class="animation-element">
       <p id="s1" class="animation-element">
         inputtext
@@ -56,12 +56,12 @@
       <canvas id="chart11" class="animation-element">
       </canvas>
     </div>
-    <div class="down2" class="animation-element">
-      <a href="#sec3"><img src="../static/img/arrow.png" alt="arrow"></a>
+    <div class="down2" class="animation-element-down">
+      <a href="#sec3"><img src="../static/img/arrow.png" alt="arrow" class="animation-element-down"></a>
     </div>
   </section>
 
-  <section id="sec3" class="animation-element">
+  <section id="sec3">
     <div id="div3-1" class="animation-element">
       <p id="s2" class="animation-element">
         inputtext
@@ -72,12 +72,12 @@
       <canvas id="chart22" class="animation-element">
       </canvas>
     </div>
-    <div class="down2" class="animation-element">
-      <a href="#sec4"><img src="../static/img/arrow.png" alt="arrow"></a>
+    <div class="down3" class="animation-element-down">
+      <a href="#sec4"><img src="../static/img/arrow.png" alt="arrow" class="animation-element-down"></a>
     </div>
   </section>
 
-  <section id="sec4" class="animation-element" class="animation-element">
+  <section id="sec4">
     <div id="div4-1" class="animation-element">
       <p id="s3" class="animation-element">
         inputtext
@@ -88,9 +88,9 @@
       <canvas id="chart33" class="animation-element">
       </canvas>
     </div>
-    <div class="down2" class="animation-element">
-      <a href="#sec5"><img src="../static/img/arrow.png" alt="arrow"></a>
-    </div>
+<!--    <div class="down4" class="animation-element-down">-->
+<!--      <a href="#sec5"><img src="../static/img/arrow.png" alt="arrow" class="animation-element-down"></a>-->
+<!--    </div>-->
   </section>
 
   <section id="sec5" class="animation-element">
@@ -104,7 +104,7 @@
         inputtext
       </p>
     </div>
-    <div class="down2" class="animation-element">
+    <div class="down5" class="animation-element">
       <a href="#sec1"><img id="down3" src="../static/img/arrow.png" alt="arrow" style="transform:rotate(180deg);"></a>
     </div>
   </section>
