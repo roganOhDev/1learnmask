@@ -290,12 +290,18 @@ p#s5{
   left:50%;
   transform: translate(-50%,100%);
 }
+.down:hover{
+  filter: brightness(1.5);
+}
 .down2{
   /* background-color:red; */
   position:absolute;
   left:50%;
   padding-top:48%;
   transform: translate(-50%,0%);
+}
+.down2:hover{
+  filter: brightness(1.5);
 }
 .down3{
   /* background-color:red; */
@@ -304,6 +310,9 @@ p#s5{
   padding-top:48%;
   transform: translate(-50%,0%);
 }
+.down3:hover{
+  filter: brightness(1.5);
+}
 .down4{
   /* background-color:red; */
   position:absolute;
@@ -311,12 +320,18 @@ p#s5{
   padding-top:48%;
   transform: translate(-50%,0%);
 }
+.down4:hover{
+  filter: brightness(1.5);
+}
 .down5{
   /* background-color:red; */
   position:absolute;
   left:50%;
   padding-top:48%;
   transform: translate(-50%,0%);
+}
+.down5:hover{
+  filter: brightness(1.5);
 }
 .information{
   width:100%;
