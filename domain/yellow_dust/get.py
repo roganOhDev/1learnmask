@@ -5,8 +5,10 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 
-from const.config import yellow_dust_url, service, options
+from const.config import yellow_dust_url, driver_path
 from const.data_cache import get_date_last_yellow_dust, last_yellow_dust
 from domain.update_cache import set_yellow_dust_cache
 from domain.yellow_dust.yellow_dust_grade_type import YellowDustGradeType
@@ -31,6 +33,9 @@ def get() -> GradeType:
 
 
 def __get_chrome_driver() -> WebDriver:
+    service = Service(driver_path)
+    options = Options()
+    options.add_argument('--headless')
     chrome_driver = webdriver.Chrome(service=service, options=options)
     chrome_driver.get(yellow_dust_url)
 

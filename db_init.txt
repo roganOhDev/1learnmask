@@ -1,5 +1,6 @@
 drop table if exists air_quality;
 drop table if exists covid;
+drop table if exists predicted_cold;
 
 CREATE TABLE air_quality
                 (id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -11,3 +12,5 @@ CREATE TABLE covid
                 (id INTEGER PRIMARY KEY AUTOINCREMENT,
                  date TEXT,
                  value INTEGER);
+
+CREATE TABLE predicted_cold(id INTEGER PRIMARY KEY AUTOINCREMENT,year TEXT, date TEXT, value INTEGER);

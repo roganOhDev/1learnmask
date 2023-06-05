@@ -27,7 +27,7 @@ timeout = 2
 
 # chrome driver
 current_dir = os.path.dirname(os.path.abspath(__file__))
-driver_path = os.path.join(current_dir, './chromedriver/chromedriver')
+driver_path = os.path.join(current_dir, '../chromedriver/chromedriver')
 
 service = Service(driver_path)
 options = Options()

@@ -32,6 +32,7 @@ def ultra_sonic():
 
         sleep(0.5)
 
+
 def clear_serial_buffer():
     while coms.in_waiting > 0:
         _ = coms.readline()

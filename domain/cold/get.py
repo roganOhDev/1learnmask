@@ -11,6 +11,7 @@ import tensorflow as tf
 
 from const.config import db_name
 from const import data_cache
+from domain.cold.predicted_cold import PredictedCold
 from grade_type import GradeType
 from utils.log import logger
 
@@ -18,6 +19,13 @@ from utils.log import logger
 def learn() -> int:
     if data_cache.last_cold_date == datetime.date.today():
         logger.info("not have to update data : cold")
+        return data_cache.last_cold_value
+
+    latest_value = PredictedCold.get_latest()
+    if latest_value is not None:
+        logger.info("already have data : cold")
+        data_cache.last_cold_date = latest_value._data[0].date
+        data_cache.last_cold_value = latest_value._data[0].value
         return data_cache.last_cold_value
 
     tf.random.set_seed(777)  # 하이퍼파라미터 튜닝을 위해 실행시 마다 변수가 같은 초기값 가지게 하기
@@ -105,6 +113,8 @@ def learn() -> int:
 
     data_cache.last_cold_date = datetime.date.today()
     data_cache.last_cold_value = int(y_predict[0][0])
+
+    PredictedCold(int(y_predict[0][0]), int(datetime.datetime.now().year), str(datetime.date.today())).save()
 
     return int(y_predict[0][0])
 

@@ -26,7 +26,6 @@ def update_data() -> (int, int, int, int, int, int, bool):
     grade_sum += yellow_dust_grade
 
     cold_grade = get_cold.get().value
-    cold_grade = GradeType.BAD.value
     grade_sum += cold_grade
 
     return covid_grade, pm10_grade, pm25_grade, yellow_dust_grade, cold_grade, grade_sum, grade_sum >= 30
