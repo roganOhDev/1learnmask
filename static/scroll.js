@@ -15,22 +15,22 @@ function debounce(func, wait = 10, immediate = true) {
 }
 
 function checkScroll() {
-      const elements = document.querySelectorAll('.animation-element');
+    const elements = document.querySelectorAll('.animation-element');
 
-  elements.forEach((element) => {
-    const elementTop = element.getBoundingClientRect().top;
-    const elementBottom = element.getBoundingClientRect().bottom;
+    elements.forEach((element) => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementBottom = element.getBoundingClientRect().bottom;
 
-    // 화면에 요소가 보이는지 확인
-    const isVisible = elementTop < window.innerHeight && elementBottom >= 0;
+        // 화면에 요소가 보이는지 확인
+        const isVisible = elementTop < window.innerHeight && elementBottom >= 0;
 
-    // 보이는 요소에 animate 클래스 추가
-    if (isVisible) {
-      element.classList.add('animate');
-    } else {
-      element.classList.remove('animate');
-    }
-  });
+        // 보이는 요소에 animate 클래스 추가
+        if (isVisible) {
+            element.classList.add('animate');
+        } else {
+            element.classList.remove('animate');
+        }
+    });
 }
 
 window.addEventListener('scroll', debounce(checkScroll));

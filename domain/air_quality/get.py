@@ -33,8 +33,8 @@ def get() -> (int, int):
         __create(base)
 
     latest_data = AirQuality.get_latest_data()._data[0]
-    pm10 = latest_data.pm10Value
-    pm25 = latest_data.pm25Value
+    pm10 = latest_data.get_pm_10_value()
+    pm25 = latest_data.get_pm_25_value()
     pm10_grade = FineAirQualityGradeType.check_grade(pm10)
     pm25_grade = FineAirQualityGradeType.check_grade(pm25)
 

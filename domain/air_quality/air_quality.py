@@ -24,6 +24,23 @@ class AirQuality(Base):
         db.add(self)
         db.commit()
 
+    def get_pm_10_value(self):
+        value = self.pm10Value
+
+        if value == '-':
+            return 0
+        else:
+            return value
+
+
+    def get_pm_25_value(self):
+        value = self.pm25Value
+
+        if value == '-':
+            return 0
+        else:
+            return value
+
     @staticmethod
     def get_latest_data():
         db = next(get_db())
