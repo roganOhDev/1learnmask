@@ -56,7 +56,12 @@ def __get_yellow_dust_data_with_crowl(driver: WebDriver) -> (datetime.datetime, 
         EC.presence_of_element_located((By.CSS_SELECTOR, 'span.value'))
     )
 
-    return datetime.datetime.now(), int(seoul_data.text)
+    seoul_data_value = 0
+
+    if seoul_data.text != '':
+        seoul_data_value = int(seoul_data.text)
+
+    return datetime.datetime.now(), seoul_data_value
 
 
 def __check_not_have_to_get_data() -> bool:

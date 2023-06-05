@@ -26,11 +26,13 @@ def ultra_sonic():
 
         if data <= 30:
             if mask:
+                print("++++++++++++++++++++++++++++++++++++++++++++++")
                 coms.write(b'R')
             else:
+                print("----------------------------------------------")
                 coms.write(b'B')
 
-        sleep(0.5)
+        sleep(0.05)
 
 
 def clear_serial_buffer():

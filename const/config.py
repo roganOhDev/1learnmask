@@ -19,7 +19,6 @@ version = RunVersion.demo
 # arduino
 # port = "COM3"
 # port = "/dev/cu.Bluetooth-Incoming-Port"
-port_for_dust = "/dev/cu.usbmodem1101"
 # port_for_ultra_sonic = "/dev/cu.usbmodem1101"
 port_for_ultra_sonic = "/dev/cu.usbserial-10"
 baudrate = 9600

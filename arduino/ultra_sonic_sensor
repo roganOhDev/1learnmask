@@ -31,15 +31,19 @@ void loop() {
 
       if (receivedChar == 'R') {
         digitalWrite(redPin, LOW);
-    delay(3000);
+        delay(3000);
       }
       else if (receivedChar == 'B') {
         digitalWrite(bluePin, LOW);
-    delay(3000);
+        delay(3000);
+      }
+
+      while(Serial.available() > 0){
+        char _ = Serial.read();
       }
 
     }
-     digitalWrite(redPin, HIGH);
+  digitalWrite(redPin, HIGH);
   digitalWrite(greenPin, HIGH);
   digitalWrite(bluePin, HIGH);
 }
