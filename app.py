@@ -1,6 +1,7 @@
 import json
 from flask import Flask, render_template, request
 
+from domain.covid import get as get_covid
 from domain.sensor.ultra_sonic import ultra_sonic
 from domain.update_data import update_data, get_data
 from utils.log import logger
@@ -16,14 +17,17 @@ sched.add_job(job, 'cron', minute='5')
 
 sched.start()
 
-ultra_sonic_thread = threading.Thread(target=ultra_sonic)
-ultra_sonic_thread.start()
+# ultra_sonic_thread = threading.Thread(target=ultra_sonic)
+# ultra_sonic_thread.start()
 
 with app.app_context():    
     from domain import update_cache
 
     update_cache.run()
 
+@app.route('/a')
+def a():
+    return get_covid.get_new()
 
 @app.route('/')
 def hello_world():

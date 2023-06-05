@@ -1,5 +1,3 @@
-from time import sleep
-
 from const.config import port_for_ultra_sonic, baudrate, timeout
 import serial
 
@@ -26,13 +24,9 @@ def ultra_sonic():
 
         if data <= 30:
             if mask:
-                print("++++++++++++++++++++++++++++++++++++++++++++++")
                 coms.write(b'R')
             else:
-                print("----------------------------------------------")
                 coms.write(b'B')
-
-        sleep(0.05)
 
 
 def clear_serial_buffer():

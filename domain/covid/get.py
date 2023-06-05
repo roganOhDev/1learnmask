@@ -1,21 +1,16 @@
 import datetime
 
-from selenium.webdriver.chrome import webdriver
-from selenium.webdriver.chrome.webdriver import WebDriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-
-from const.config import covid_url, driver_path
 from const.data_cache import get_date_last_covid
 from domain.covid.covid import Covid
 from domain.update_cache import __set_date_last_covid_date
 from grade_type import GradeType
 from utils import log
 from utils.log import logger
-from selenium import webdriver
+
+import requests
+from bs4 import BeautifulSoup
+
+from utils.time_utils import string_to_date_covid
 
 
 def get_30_days_data():
@@ -26,24 +21,35 @@ def get_30_days_data():
     return data
 
 
+def get_new():
+    if __check_not_have_to_get_data():
+        logger.info("not have to update data : covid")
+
+    else:
+        url = "https://ncov.kdca.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=11&ncvContSeq=&contSeq=&board_id=&gubun="
+        response = requests.get(url)
+        html_content = response.text
+        soup = BeautifulSoup(html_content, "html.parser")
+        value_table = soup.find("div", class_="data_table mgt16 tbl_scrl_m mini").find("table", class_="num")
+        dates = [str(datetime.datetime.now().year) + "-" + str(value.text[:-1].replace(".", "-")) for value in
+                         value_table.find("thead").find_all("th")[1:]][:-1]
+        values = [value.text.replace(",", "") for value in value_table.find("tbody").find_all("td")][:-1]
+
+        zipped = list(zip(dates, values))
+        return zipped
+
+
 def get() -> GradeType:
     if __check_not_have_to_get_data():
         logger.info("not have to update data : covid")
 
     else:
-        driver = __get_chrome_driver()
-        covid_values = __get_covid_data_with_crowl(driver)
-
-        first_day = __get_first_day_of_crowl(covid_values)
-        element_date = first_day
+        covid_values = get_new()
 
         for element in covid_values:
-            __check_and_save_in_db(element, element_date)
-            element_date += datetime.timedelta(days=1)
+            __check_and_save_in_db(element)
 
-        __set_date_last_covid_date(element_date)
-
-        driver.quit()
+        __set_date_last_covid_date(covid_values[-1][0])
 
     if cnt_week_doubling():
         return GradeType.VERY_BAD
@@ -85,49 +91,15 @@ def is_week_doubling(date: datetime.date) -> bool:
     return today_value >= 2 * last_week_value
 
 
-def __get_chrome_driver() -> WebDriver:
-    service = Service(driver_path)
-    options = Options()
-    options.add_argument('--headless')
-    chrome_driver = webdriver.Chrome(service=service, options=options)
-    chrome_driver.get(covid_url)
-
-    return chrome_driver
-
-
-def __create_dynamic_data_waiter(driver: WebDriver) -> WebDriverWait:
-    element = driver.find_element(By.CSS_SELECTOR,
-                                  "div._infect_content[data-type='status'][data-param='u1=1'][style='display: block;']")
-
-    return WebDriverWait(element, 10)
-
-
-def __get_covid_data_with_crowl(driver: WebDriver):
-    wait = __create_dynamic_data_waiter(driver)
-
-    graph = wait.until(
-        EC.presence_of_element_located(
-            (By.CSS_SELECTOR, 'dl.data_content.-bar_thin.-bar_data._x_axis_and_series_label'))
-    )
-
-    return graph.find_elements(By.CSS_SELECTOR, "div.column._column")
-
-
-def __get_first_day_of_crowl(covid_values) -> datetime.date:
-    date_string = covid_values[0].find_element(By.CSS_SELECTOR, "dt.x_axis_value").text
-    return datetime.date(datetime.datetime.now().year, int(date_string.split('.')[0]),
-                         int(date_string.split('.')[1]))
-
-
-def __check_and_save_in_db(element, date):
-    span = element.find_element(By.CSS_SELECTOR, "span.text")
-    value = span.get_attribute('innerText').replace(',', '').replace('최저', '').replace('최고', '').strip()
+def __check_and_save_in_db(element):
+    date = element[0]
+    value = element[1]
 
     __create_covid_data(Covid(value, date))
 
 
 def __create_covid_data(covid: Covid):
-    if covid.date > get_date_last_covid():
+    if get_date_last_covid() == "" or string_to_date_covid(covid.date) > get_date_last_covid():
         log.logger.info("covid new data : " + str(covid.date) + " , " + str(covid.value))
         covid.save()
 

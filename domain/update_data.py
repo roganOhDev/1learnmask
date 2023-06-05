@@ -2,7 +2,7 @@ from domain.covid import get as get_covid
 from domain.air_quality import get as get_air_quality
 from domain.yellow_dust import get as get_yellow_dust
 from domain.cold import get as get_cold
-from grade_type import GradeType
+from utils import log
 
 
 def get_data():
