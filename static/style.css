@@ -285,6 +285,9 @@ p#s5{
   margin-left:0;
   margin:auto;
 }
+.refresh:hover{
+  filter: brightness(1.5);
+}
 .down{
   position:absolute;
   left:50%;
