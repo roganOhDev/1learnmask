@@ -12,7 +12,7 @@
 .animation-element {
     opacity: 0;
     transform: translateY(100px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 
 .animation-element.animate {
@@ -23,7 +23,7 @@
 .animation-element-down {
     opacity: 0;
     transform: translateY(100px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 
 .animation-element-down.animate-down {
