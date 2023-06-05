@@ -35,14 +35,21 @@ function checkScroll() {
     const elementSection2s = document.querySelectorAll('.animation-element-section2');
 
     elementSection2s.forEach((elementSection2) => {
-        elementSection2.classList.add('animate');
+        const elementTop = elementSection2.getBoundingClientRect().top;
+
+        const isVisible = elementTop >= 0 && elementTop <= window.innerHeight;
+
+        if (isVisible) {
+            elementSection2.classList.add('animate');
+        } else {
+            elementSection2.classList.remove('animate');
+        }
     })
 
     const downElements = document.querySelectorAll('.animation-element-down');
 
     downElements.forEach((downElement) => {
         const elementTop = downElement.getBoundingClientRect().top;
-        const elementBottom = downElement.getBoundingClientRect().bottom;
 
         // 화면에 요소가 보이는지 확인
         const isVisible = elementTop <= window.scrollY + 150;
