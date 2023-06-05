@@ -32,6 +32,12 @@ function checkScroll() {
         }
     });
 
+    const elementSection2s = document.querySelectorAll('.animation-element-section2');
+
+    elementSection2s.forEach((elementSection2) => {
+        elementSection2.classList.add('animate');
+    })
+
     const downElements = document.querySelectorAll('.animation-element-down');
 
     downElements.forEach((downElement) => {

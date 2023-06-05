@@ -1,21 +1,32 @@
+.animation-element-section2 {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.animation-element-section2.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .animation-element {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 2s ease, transform 2s ease;
+    transform: translateY(100px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .animation-element.animate {
-    opacity: 3;
+    opacity: 1;
     transform: translateY(0);
 }
 
 .animation-element-down {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 2s ease, transform 2s ease;
+    transform: translateY(100px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .animation-element-down.animate-down {
-    opacity: 3;
+    opacity: 1;
     transform: translateY(0);
 }

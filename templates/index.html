@@ -2,111 +2,117 @@
 <html lang="ko">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1learnMask</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <script>
-    var jsonData = JSON.parse('{{ data|safe }}');
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;900&display=swap" rel="stylesheet"> 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
-  <link rel="stylesheet" href="{{ url_for('static', filename='scroll.css') }}">
-  <script src="{{ url_for('static', filename='scroll.js') }}"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1learnMask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        var jsonData = JSON.parse('{{ data|safe }}');
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='scroll.css') }}">
+    <script src="{{ url_for('static', filename='scroll.js') }}"></script>
 </head>
 <body>
-  <section id="sec1">
+<section id="sec1">
     <div id="div1-1">
-      <img class="icon1" src="../static/img/icon1.png" alt="icon1">
-      MASK - ON&OFF
-      <img class="icon1" src="../static/img/icon1.png" alt="icon1">
+        <img class="icon1" src="../static/img/icon1.png" alt="icon1">
+        MASK - ON&OFF
+        <img class="icon1" src="../static/img/icon1.png" alt="icon1">
     </div>
     <div id="div1-2">
-      <p id="p1">마스크</p>
-      <p id="p2">알리미</p>
+        <p id="p1">마스크</p>
+        <p id="p2">알리미</p>
     </div>
     <div id="div1-3">
-      <p id="p3">대기 오염도 측정 데이터를 통해</p>
-      <p id="p4">오늘의 마스크 착용 여부를 확인해보세요!</p>
+        <p id="p3">대기 오염도 측정 데이터를 통해</p>
+        <p id="p4">오늘의 마스크 착용 여부를 확인해보세요!</p>
     </div>
     <div id="div1-4" onclick="window.location.reload()">
-      <p id="p5">다시 확인하기</p>
-      <img class="refresh" src="../static/img/refresh.png" alt="refresh">
+        <p id="p5">다시 확인하기</p>
+        <img class="refresh" src="../static/img/refresh.png" alt="refresh">
     </div>
     <div id="div1-5">
-      <p id="p6">MASK ON</p>
+        <p id="p6">MASK ON</p>
     </div>
     <div class="down" class="animation-element">
-      <a href="#sec2"><img src="../static/img/arrow.png" alt="arrow" class="animation-element"></a>
+        <a href="#sec2"><img src="../static/img/arrow.png" alt="arrow" class="animation-element"></a>
     </div>
-  </section>
+</section>
 
-  <section id="sec2">
-    <div id="div2-1" class="animation-element">
-      <p id="s1" class="animation-element">
-        inputtext
-      </p>
-    </div>
-    <div id="chart1" class="animation-element">
-      <img class="information" src="../static/img/information.png" alt="information" class="animation-element">
-      <canvas id="chart11" class="animation-element">
-      </canvas>
+<section id="sec2">
+    <div id="div2" class="animation-element-section2">
+        <div id="div2-1">
+            <p id="s1">
+                inputtext
+            </p>
+        </div>
+        <div id="chart1">
+            <img class="information" src="../static/img/information.png" alt="information">
+            <canvas id="chart11" >
+            </canvas>
+        </div>
     </div>
     <div class="down2" class="animation-element-down">
-      <a href="#sec3"><img src="../static/img/arrow.png" alt="arrow" class="animation-element-down"></a>
+        <a href="#sec3"><img src="../static/img/arrow.png" alt="arrow" class="animation-element-down"></a>
     </div>
-  </section>
+</section>
 
-  <section id="sec3">
-    <div id="div3-1" class="animation-element">
-      <p id="s2" class="animation-element">
-        inputtext
-      </p>
-    </div>
-    <div id="chart2" class="animation-element">
-      <img class="information" src="../static/img/information.png" alt="information" class="animation-element">
-      <canvas id="chart22" class="animation-element">
-      </canvas>
+<section id="sec3">
+    <div id="div3" class="animation-element">
+        <div id="div3-1">
+            <p id="s2">
+                inputtext
+            </p>
+        </div>
+        <div id="chart2">
+            <img class="information" src="../static/img/information.png" alt="information">
+            <canvas id="chart22">
+            </canvas>
+        </div>
     </div>
     <div class="down3" class="animation-element-down">
-      <a href="#sec4"><img src="../static/img/arrow.png" alt="arrow" class="animation-element-down"></a>
+        <a href="#sec4"><img src="../static/img/arrow.png" alt="arrow" class="animation-element-down"></a>
     </div>
-  </section>
+</section>
 
-  <section id="sec4">
-    <div id="div4-1" class="animation-element">
-      <p id="s3" class="animation-element">
-        inputtext
-      </p>
+<section id="sec4">
+    <div id="div4" class="animation-element">
+        <div id="div4-1">
+            <p id="s3">
+                inputtext
+            </p>
+        </div>
+        <div id="chart3">
+            <img class="information" src="../static/img/information.png" alt="information">
+            <canvas id="chart33">
+            </canvas>
+        </div>
     </div>
-    <div id="chart3" class="animation-element">
-      <img class="information" src="../static/img/information.png" alt="information" class="animation-element">
-      <canvas id="chart33" class="animation-element">
-      </canvas>
-    </div>
-<!--    <div class="down4" class="animation-element-down">-->
-<!--      <a href="#sec5"><img src="../static/img/arrow.png" alt="arrow" class="animation-element-down"></a>-->
-<!--    </div>-->
-  </section>
+    <!--    <div class="down4" class="animation-element-down">-->
+    <!--      <a href="#sec5"><img src="../static/img/arrow.png" alt="arrow" class="animation-element-down"></a>-->
+    <!--    </div>-->
+</section>
 
-  <section id="sec5" class="animation-element">
-    <div id="div5-1" class="animation-element">
-      <p id="s4" class="animation-element">
-        inputtext
-      </p>
+<section id="sec5" class="animation-element">
+    <div id="div5-1">
+        <p id="s4">
+            inputtext
+        </p>
     </div>
-    <div id="div6-1" class="animation-element">
-      <p id="s5" class="animation-element">
-        inputtext
-      </p>
+    <div id="div6-1">
+        <p id="s5">
+            inputtext
+        </p>
     </div>
-    <div class="down5" class="animation-element">
-      <a href="#sec1"><img id="down3" src="../static/img/arrow.png" alt="arrow" style="transform:rotate(180deg);"></a>
+    <div class="down5">
+        <a href="#sec1"><img id="down3" src="../static/img/arrow.png" alt="arrow" style="transform:rotate(180deg);"></a>
     </div>
-  </section>
+</section>
 </body>
 </html>
