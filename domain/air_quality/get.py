@@ -76,7 +76,7 @@ def __create_data(now_data, now_data_time: datetime.datetime):
 
 
 def __check_not_have_to_get_data() -> bool:
-    if get_datetime_last_air_quality_datetime() >= datetime.datetime.now() - datetime.timedelta(hours=1):
+    if get_datetime_last_air_quality_datetime() >= datetime.datetime.now() - datetime.timedelta(hours=1) - datetime.timedelta(minutes=30):
         return True
     else:
         return False

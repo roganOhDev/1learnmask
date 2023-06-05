@@ -1,0 +1,8 @@
+.animation-element {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.animation-element.animate {
+    opacity: 1;
+}

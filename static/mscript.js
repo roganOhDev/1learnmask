@@ -49,8 +49,10 @@ function logcheck() {
   console.log("총합", jsonData.grade);
   if (grade >= 30) {
     masktext = "MASK ON";
+    document.getElementById("div1-5").style.backgroundColor = "#ff1a1a";
   } else {
     masktext = "MASK OFF"
+    document.getElementById("div1-5").style.backgroundColor = "#219adf";
   }
   document.getElementById("div1-5").textContent = masktext;
 }
