@@ -12,6 +12,8 @@ var covidtext = '';
 var coldtext = '';
 var yellowtext = '';
 
+var myPopup;
+
 
 /* function isMobileDevice() {
   return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
@@ -27,7 +29,9 @@ window.onload = function() {
   coldimage();
   yellowimage();
   drawchart();
-};
+  createPopup();
+}
+
 window.addEventListener('DOMContentLoaded', function() {
 /*   var chart1 = document.getElementById('chart1');
   var canvas = document.getElementById('chart11');
@@ -48,6 +52,16 @@ window.addEventListener('DOMContentLoaded', function() {
   var canvas = document.getElementById('chart33');
   canvas.height = 250;
 });
+
+function createPopup() {
+  myPopup = new Popup({
+    id: "my-popup",
+    title: "My First Popup",
+    content: `
+        An example popup.
+        Supports multiple lines.`
+  });
+}
 
 function logcheck() {
   console.log("코로나",jsonData.covid_grade);
@@ -152,6 +166,9 @@ function drawchart() {
   // 미세먼지 차트
   jsonData.air_quality_graph_data.reverse();
   const ctx1 = document.getElementById('chart11');
+  document.getElementById('chart11').addEventListener('click',  (event) => {
+    myPopup.show();
+  });
   const lineChart1 = new Chart(ctx1, {
     type: 'line',
     data: {
@@ -180,6 +197,9 @@ function drawchart() {
   });
   // 초미세먼지 차트
   const ctx2 = document.getElementById('chart22');
+  document.getElementById('chart22').addEventListener('click',  (event) => {
+      myPopup.show();
+  });
   const lineChart2 = new Chart(ctx2, {
     type: 'line',
     data: {
@@ -208,6 +228,9 @@ function drawchart() {
   });
   // 코로나 차트
   const ctx3 = document.getElementById('chart33');
+  document.getElementById('chart33').addEventListener('click',  (event) => {
+    myPopup.show();
+  });
   const lineChart3 = new Chart(ctx3, {
     type: 'line',
     data: {
