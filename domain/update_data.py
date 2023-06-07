@@ -15,8 +15,7 @@ def get_data():
 def update_data() -> (int, int, int, int, int, int, bool):
     grade_sum = 0
 
-    # covid_grade = get_covid.get().value
-    covid_grade = 0
+    covid_grade = get_covid.get().value
     grade_sum += covid_grade
 
     pm10_grade, pm25_grade = get_air_quality.get()

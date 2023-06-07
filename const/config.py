@@ -33,7 +33,7 @@ options = Options()
 options.add_argument('--headless')
 chrome_driver = webdriver.Chrome(service=service, options=options)
 
-covid_url = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%BD%94%EB%A1%9C%EB%82%98"
+covid_url = "https://ncov.kdca.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=11&ncvContSeq=&contSeq=&board_id=&gubun="
 yellow_dust_url = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%ED%99%A9%EC%82%AC"
 
 cold_seongbuk_gu_code = 11290

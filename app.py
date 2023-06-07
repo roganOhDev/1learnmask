@@ -24,10 +24,6 @@ with app.app_context():
 
     update_cache.run()
 
-@app.route('/a')
-def a():
-    return render_template('a.html')
-
 @app.route('/')
 def hello_world():
     user_agent = request.user_agent.string
