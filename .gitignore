@@ -162,3 +162,5 @@ cython_debug/
 
 chromedriver/LICENSE.chromedriver
 chromedriver/chromedriver
+
+.DS_Store
