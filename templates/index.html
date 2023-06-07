@@ -21,6 +21,8 @@
     <script src="{{ url_for('static', filename='popup.js') }}"></script>
 </head>
 <body>
+<div class="fixed">
+<div class="group">
 <section id="sec1">
     <div id="div1-1">
         <img class="icon1" src="../static/img/icon1.png" alt="icon1">
@@ -36,8 +38,7 @@
         <p id="p4">오늘의 마스크 착용 여부를 확인해보세요!</p>
     </div>
     <div id="div1-4" onclick="window.location.reload()">
-        <p id="p5">다시 확인하기</p>
-        <img class="refresh" src="../static/img/refresh.png" alt="refresh">
+        <img class="refresh" src="../static/img/recheck.png" alt="refresh">
     </div>
     <div id="div1-5">
         <p id="p6">MASK ON</p>
@@ -118,5 +119,7 @@
         </div>
     </div>
 </section>
+</div>
+</div>
 </body>
 </html>
