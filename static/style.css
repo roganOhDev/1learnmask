@@ -193,6 +193,10 @@ div#chart3{
   /* background-color:rgba(179, 179, 179, 0.5); */
   border-radius: 30px;
 }
+#chart11:hover{
+  transform: scale(1.1);
+  transition: 0.5s;
+}
 #chart22{
   position:relative;
   height:300px;
@@ -201,6 +205,10 @@ div#chart3{
   /* background-color:rgba(179, 179, 179, 0.5); */
   border-radius: 30px;
 }
+#chart22:hover{
+  transform: scale(1.1);
+  transition: 0.5s;
+}
 #chart33{
   position:relative;
   height:300px;
@@ -208,6 +216,10 @@ div#chart3{
   margin-top:5%;
   /* background-color:rgba(179, 179, 179, 0.5); */
   border-radius: 30px;
+}
+#chart33:hover{
+  transform: scale(1.1);
+  transition: 0.5s
 }
 p#p1{
   margin-top:0;
