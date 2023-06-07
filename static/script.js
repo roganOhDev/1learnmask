@@ -282,3 +282,4 @@ document.querySelector('.down5').addEventListener('click', function(e) {
     behavior: 'smooth'
   });
 });
+

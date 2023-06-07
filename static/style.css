@@ -176,6 +176,7 @@ div#chart2{
   float:left;
   width:50%;
   height:500px;
+  z-index: 1;
   /* background-color:black; */
 }
 div#chart3{
@@ -240,6 +241,7 @@ p#p6{
   font-family: 'Noto Sans KR', sans-serif;
   text-align:center;
   font-size:85px;
+  z-index: 1;
 }
 p#s1{
   color:white;
@@ -247,6 +249,7 @@ p#s1{
   font-size:37px;
   text-align:center;
   padding-top:71.5%;
+  z-index: 1;
 }
 p#s2{
   color:white;
@@ -254,6 +257,7 @@ p#s2{
   font-size:37px;
   text-align:center;
   padding-top:71.5%;
+  z-index: 1;
 }
 p#s3{
   color:white;
@@ -261,6 +265,7 @@ p#s3{
   font-size:37px;
   text-align:center;
   padding-top:71.5%;
+  z-index: 1;
 }
 p#s4{
   color:white;
@@ -268,6 +273,7 @@ p#s4{
   font-size:37px;
   text-align:center;
   padding-top:71.5%;
+  z-index: 1;
 }
 p#s5{
   color:white;
@@ -275,8 +281,14 @@ p#s5{
   font-size:37px;
   text-align:center;
   padding-top:71.5%;
+  z-index: 1;
 }
-
+p#p5:hover{
+  filter: brightness(1.5);
+}
+p#p5:hover + .refresh{
+  filter: brightness(1.5);
+}
 .icon1{
   margin-top:50%;
   margin:auto;
@@ -288,10 +300,14 @@ p#s5{
 .refresh:hover{
   filter: brightness(1.5);
 }
+.refresh5:hover + .p#p5{
+  filter: brightness(1.5);
+}
 .down{
   position:absolute;
   left:50%;
   transform: translate(-50%,100%);
+  z-index: 2;
 }
 .down:hover{
   filter: brightness(1.5);
@@ -302,6 +318,7 @@ p#s5{
   left:50%;
   padding-top:48%;
   transform: translate(-50%,0%);
+  z-index: 2;
 }
 .down2:hover{
   filter: brightness(1.5);
@@ -312,6 +329,7 @@ p#s5{
   left:50%;
   padding-top:48%;
   transform: translate(-50%,0%);
+  z-index: 2;
 }
 .down3:hover{
   filter: brightness(1.5);
@@ -322,6 +340,7 @@ p#s5{
   left:50%;
   padding-top:48%;
   transform: translate(-50%,0%);
+  z-index: 2;
 }
 .down4:hover{
   filter: brightness(1.5);
@@ -332,6 +351,7 @@ p#s5{
   left:50%;
   padding-top:48%;
   transform: translate(-50%,0%);
+  z-index: 2;
 }
 .down5:hover{
   filter: brightness(1.5);
