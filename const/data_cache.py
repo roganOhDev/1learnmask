@@ -21,8 +21,10 @@ def get_datetime_last_air_quality_datetime():
 def get_last_covid_update_date() -> datetime.date:
     return last_covid_update_date
 
+
 def get_last_covid_date() -> datetime.date:
     return last_cold_date
+
 
 def get_date_last_yellow_dust() -> datetime.datetime:
     return last_yellow_dust.datetime

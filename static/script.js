@@ -56,7 +56,6 @@ function logcheck() {
   console.log("초미세",jsonData.pm25_grade);
   console.log("황사",jsonData.yellow_dust_grade);
   console.log("총합",jsonData.grade);
-  grade = 100;
   if(grade>=30) {
     masktext = "MASK ON";
     document.getElementById("div1-5").style.backgroundColor = "#ff1a1a";
