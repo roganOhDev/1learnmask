@@ -230,6 +230,7 @@ function drawchart() {
             }
         }
     });
+    jsonData.covid_graph_data.reverse();
     // 코로나 차트
     const ctx3 = document.getElementById('chart33');
     document.getElementById('chart33').addEventListener('click', (event) => {
