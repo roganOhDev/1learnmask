@@ -12,9 +12,6 @@ var covidtext = '';
 var coldtext = '';
 var yellowtext = '';
 
-var myPopup;
-
-
 /* function isMobileDevice() {
   return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 } */
@@ -321,15 +318,3 @@ document.querySelector('.down5').addEventListener('click', function (e) {
 });
 
 
-function capture() {
-    html2canvas(document.querySelector("#chart1")).then(canvas => {
-        var dataUrl = canvas.toDataURL();
-        // myPopup.show();
-        // new Popup({
-        //   id: "my-popup",
-        //   title: "My First Popup",
-        //   content: `abc`
-        // }).show();
-        // openPopup(dataUrl);
-    });
-}
