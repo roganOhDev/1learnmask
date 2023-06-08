@@ -323,7 +323,7 @@ function setBackgroundImage() {
     var currentHour = currentDate.getHours();
     var backgroundElement = document.querySelector('.fixed');
 
-    if (currentHour >= 6 && currentHour < 20) {
+    if (currentHour >= 6 && currentHour < 18) {
         backgroundElement.style.backgroundImage = "url('static/img/citysky3.jpg')";
     } else {
         backgroundElement.style.backgroundImage = "url('static/img/citysky1.jpg')";
