@@ -268,8 +268,8 @@ document.querySelector('.down').addEventListener('click', function (e) {
     const targetElement = document.querySelector('#sec2');
 
     window.scrollTo({
-        top: targetElement.offsetTop,
-        behavior: 'smooth'
+    top: targetElement.offsetTop+100,
+    behavior: 'smooth'
     });
 })
 document.querySelector('.down2').addEventListener('click', function (e) {
@@ -278,7 +278,7 @@ document.querySelector('.down2').addEventListener('click', function (e) {
     const targetElement = document.querySelector('#sec3');
 
     window.scrollTo({
-        top: targetElement.offsetTop,
+    top: targetElement.offsetTop+100,
         behavior: 'smooth'
     });
 });
@@ -290,7 +290,7 @@ document.querySelector('.down3').addEventListener('click', function (e) {
     const targetElement = document.querySelector('#sec4');
 
     window.scrollTo({
-        top: targetElement.offsetTop,
+    top: targetElement.offsetTop+100,
         behavior: 'smooth'
     });
 });
@@ -301,7 +301,7 @@ document.querySelector('.down4').addEventListener('click', function (e) {
     const targetElement = document.querySelector('#sec5');
 
     window.scrollTo({
-        top: targetElement.offsetTop,
+    top: targetElement.offsetTop+100,
         behavior: 'smooth'
     });
 });
@@ -312,7 +312,7 @@ document.querySelector('.down5').addEventListener('click', function (e) {
     const targetElement = document.querySelector('#sec1');
 
     window.scrollTo({
-        top: targetElement.offsetTop,
+    top: targetElement.offsetTop+100,
         behavior: 'smooth'
     });
 });
