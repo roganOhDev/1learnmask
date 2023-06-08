@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;900&display=swap" rel="stylesheet">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='scroll.css') }}">
@@ -21,6 +22,7 @@
     <script src="{{ url_for('static', filename='popup.js') }}"></script>
 </head>
 <body>
+
 <section id="sec1">
     <div id="div1-1">
         <img class="icon1" src="../static/img/icon1.png" alt="icon1">
@@ -58,6 +60,7 @@
             <img class="information" src="../static/img/information.png" alt="information">
             <canvas id="chart11">
             </canvas>
+
         </div>
     </div>
     <div class="down2" class="animation-element-down">
