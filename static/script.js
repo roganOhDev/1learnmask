@@ -26,6 +26,7 @@ window.onload = function () {
     coldimage();
     yellowimage();
     drawchart();
+    setBackgroundImage();
 }
 
 window.addEventListener('DOMContentLoaded', function () {
@@ -317,4 +318,14 @@ document.querySelector('.down5').addEventListener('click', function (e) {
     });
 });
 
+function setBackgroundImage() {
+    var currentDate = new Date();
+    var currentHour = currentDate.getHours();
+    var backgroundElement = document.querySelector('.fixed');
 
+    if (currentHour >= 6 && currentHour < 20) {
+        backgroundElement.style.backgroundImage = "url('static/img/citysky3.jpg')";
+    } else {
+        backgroundElement.style.backgroundImage = "url('static/img/citysky1.jpg')";
+    }
+}
