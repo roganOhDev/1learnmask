@@ -22,6 +22,13 @@
     <script src="{{ url_for('static', filename='popup.js') }}"></script>
 </head>
 <body>
+<div class="floating">
+    <a href="#"><div class="floatdiv"><p class="floatp">메인화면</p></div></a>
+    <a href="#sec2"><div class="floatdiv"><p class="floatp">미세먼지</p></div></a>
+    <a href="#sec3"><div class="floatdiv"><p class="floatp">초미세먼지</p></div></a>
+    <a href="#sec4"><div class="floatdiv"><p class="floatp">코로나</p></div></a>
+    <a href="#sec5"><div class="floatdiv"><p class="floatp">감기 / 황사</p></div></a>
+</div>
 <div class="fixed">
 <div class="group">
 <section id="sec1">
@@ -99,9 +106,9 @@
             </canvas>
         </div>
     </div>
-    <!--    <div class="down4" class="animation-element-down">-->
-    <!--      <a href="#sec5"><img src="../static/img/arrow.png" alt="arrow" class="animation-element-down"></a>-->
-    <!--    </div>-->
+    <div class="down4" class="animation-element-down">
+    <a href="#sec5"><img src="../static/img/arrow.png" alt="arrow" class="animation-element-down"></a>
+    </div>
 </section>
 
 <section id="sec5">

@@ -25,28 +25,20 @@ html, body {
   font-style: normal;
 }
 html { 
-  scroll-behavior: smooth; 
+  scroll-behavior: smooth;
 } 
 .title {
   text-align:center;
   margin:auto;
 }
-.scroll-container{
-  scroll-behavior: smooth;
-  display: block;
-  text-align:center;
-  margin:auto;
-  overflow-y: scroll;
-  width: 350px;
-  height: 250px;
-}
 section#sec1{
-/*   background-color: darkgoldenrod; */
   position:relative;
   width:50%;
   left:50%;
   margin-top:10%;
   transform: translate(-50%,5%);
+  scroll-margin-top: 25vh;
+  /* scroll-snap-align: center; */
   /* background-color:rgba(255,255,255,0.3);
   border-radius: 100px; */
 }
@@ -58,6 +50,8 @@ section#sec2{
   height:500px;
   margin-top:8%;
   transform: translate(-50%,0%);
+  scroll-margin-top: 25vh;
+  /* scroll-snap-align: center; */
 }
 section#sec3{
 /*   background-color: darkgray; */
@@ -66,6 +60,8 @@ section#sec3{
   width:50%;
   height:500px;
   transform: translate(-50%,0%);
+  scroll-margin-top: 25vh;
+  /* scroll-snap-align: center; */
 }
 section#sec4{
 /*   background-color: darkgray; */
@@ -74,6 +70,8 @@ section#sec4{
   width:50%;
   height:500px;
   transform: translate(-50%,0%);
+  scroll-margin-top: 25vh;
+  /* scroll-snap-align: center; */
 }
 section#sec5{
 /*   background-color: darkgray; */
@@ -82,6 +80,8 @@ section#sec5{
   width:50%;
   height:500px;
   transform: translate(-50%,0%);
+  scroll-margin-top: 25vh;
+  /* scroll-snap-align: center; */
 }
 div#div1-1{
   /* font-family: 'TTTtangsbudaejjigaeB'; */
@@ -196,7 +196,7 @@ div#chart3{
   position:relative;
   height:300px;
   margin-left:0%;
-   background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
   border-radius: 30px;
 }
 #chart11:hover{
@@ -375,7 +375,8 @@ p#p5:hover + .refresh{
 .information{
   width: 94%;
   padding-left:3%;
-  padding-top:10%;
+  padding-top:5%;
+  padding-bottom:5%;
 }
 .fixed{
   width: 100%; height: 100%;
@@ -389,5 +390,34 @@ p#p5:hover + .refresh{
 }
 .group{
   width:100%; height: 100%;
-  /* background-color:white; */
+  /* scroll-snap-type: y proximity; */
+}
+.floating {
+  position: fixed; 
+  right: 7%; 
+  top: 30%;
+  text-align:center;
+  width:10%;
+  height:30%;
+}
+.floatdiv{
+  background-color:#219adf;
+  position:relative;
+  box-sizing:border-box;
+  height:15%;
+  transform: translate(-50%,0%);
+  left:50%;
+  border-radius: 70px;
+  text-align:center;
+}
+.floatp{
+  position:relative;
+  transform: translate(-50%,0%);
+  left:50%;
+  color:white;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:25px;
+}
+a{
+  text-decoration-line: none;
 }
