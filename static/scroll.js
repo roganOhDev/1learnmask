@@ -52,7 +52,7 @@ function checkScroll() {
         const elementTop = downElement.getBoundingClientRect().top;
 
         // 화면에 요소가 보이는지 확인
-        const isVisible = elementTop <= window.scrollY + 150;
+        const isVisible = elementTop >= 0 && elementTop <= window.innerHeight;
 
         // 보이는 요소에 animate 클래스 추가
         if (isVisible) {
