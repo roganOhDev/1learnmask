@@ -20,6 +20,14 @@ def get_2_days_data():
 
     return data
 
+def just_get() -> (int, int):
+    latest_data = AirQuality.get_latest_data()._data[0]
+    pm10 = latest_data.get_pm_10_value()
+    pm25 = latest_data.get_pm_25_value()
+    pm10_grade = FineAirQualityGradeType.check_grade(pm10)
+    pm25_grade = FineAirQualityGradeType.check_grade(pm25)
+
+    return pm10_grade.value, pm25_grade.value
 
 def get() -> (int, int):
     if __check_not_have_to_get_data():

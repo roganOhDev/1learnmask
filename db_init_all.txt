@@ -14,7 +14,7 @@ CREATE TABLE covid
                 (id INTEGER PRIMARY KEY AUTOINCREMENT,
                  date TEXT,
                  value INTEGER,
-                  "created_at" TEXT);
+                 created_at TEXT);
 
 CREATE TABLE cold(id INTEGER PRIMARY KEY AUTOINCREMENT,year TEXT, date TEXT, value INTEGER);
 
