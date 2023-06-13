@@ -246,7 +246,13 @@ function drawchart() {
     const lineChart3 = new Chart(ctx3, {
         type: 'line',
         data: {
-            labels: jsonData.covid_graph_data.map(item => item[0]),
+            // labels: jsonData.covid_graph_data.map(item => item[0]),
+            labels: jsonData.covid_graph_data.map(item => {
+                const date = new Date(item[0]);
+                const month = date.getMonth() + 1;
+                const day = date.getDate();
+                return `${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
+            }),
             datasets: [{
                 label: '코로나',
                 data: jsonData.covid_graph_data.map(item => item[1]),
