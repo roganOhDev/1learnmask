@@ -1,8 +1,8 @@
 import json
 from flask import Flask, render_template, request
 
-# from domain.sensor.ultra_sonic import ultra_sonic
-from domain.update_data import update_data, get_data
+from domain.sensor.ultra_sonic import ultra_sonic
+from domain.update_data import update_data, get_graph_data, data
 from utils.log import logger
 from apscheduler.schedulers.background import BackgroundScheduler
 from utils.updateschedule import job
@@ -14,24 +14,25 @@ sched = BackgroundScheduler(daemon=True)
 sched.add_job(job, 'cron', minute='5')
 # sched.add_job(job, 'interval', seconds=40)
 
-# sched.start()
-#
-# ultra_sonic_thread = threading.Thread(target=ultra_sonic)
-# ultra_sonic_thread.start()
+sched.start()
+
+ultra_sonic_thread = threading.Thread(target=ultra_sonic)
+ultra_sonic_thread.start()
 
 with app.app_context():    
     from domain import update_cache
 
     update_cache.run()
+    update_data()
 
 @app.route('/')
 def hello_world():
     user_agent = request.user_agent.string
     
-    covid_grade, pm10_grade, pm25_grade, yellow_dust_grade, cold_grade, grade, mask = update_data()
+    covid_grade, pm10_grade, pm25_grade, yellow_dust_grade, cold_grade, grade, mask = data()
     logger.info("getting data is done!")
 
-    covid_graph_data, air_quality_graph_data = get_data()
+    covid_graph_data, air_quality_graph_data = get_graph_data()
     response = {
         'grade': grade,
         'mask': mask,
@@ -52,10 +53,10 @@ def hello_world():
 def helloo_world():
     user_agent = request.user_agent.string
     
-    covid_grade, pm10_grade, pm25_grade, yellow_dust_grade, cold_grade, grade, mask = update_data()
+    covid_grade, pm10_grade, pm25_grade, yellow_dust_grade, cold_grade, grade, mask = data()
     logger.info("getting data is done!(mobile)")
 
-    covid_graph_data, air_quality_graph_data = get_data()
+    covid_graph_data, air_quality_graph_data = get_graph_data()
     response = {
         'grade': grade,
         'mask': mask,

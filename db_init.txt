@@ -11,7 +11,8 @@ CREATE TABLE air_quality
 CREATE TABLE covid
                 (id INTEGER PRIMARY KEY AUTOINCREMENT,
                  date TEXT,
-                 value INTEGER);
+                 value INTEGER,
+                 created_at TEXT);
 CREATE TABLE covid
                 (id INTEGER PRIMARY KEY AUTOINCREMENT,
                  date TEXT,

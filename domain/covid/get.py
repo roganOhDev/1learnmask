@@ -34,6 +34,11 @@ def get_new():
     zipped = list(zip(dates, values))
     return zipped
 
+def just_get() -> GradeType:
+    if cnt_week_doubling():
+        return GradeType.VERY_BAD
+    else:
+        return GradeType.VERY_GOOD
 
 def get() -> GradeType:
     if __check_not_have_to_get_data():
@@ -54,13 +59,16 @@ def get() -> GradeType:
 
 
 def cnt_week_doubling() -> bool:
-    check = 7
     doubling_cnt = 0
-    while check != 0:
-        if is_week_doubling():
-            doubling_cnt += 1
+    week_data = Covid.get_week_data()
+    comparison_data = Covid.get_two_weeks_ago_data()
 
-        check -= 1
+    for data_set in zip(week_data, comparison_data):
+        this_value = data_set[0]._data[0].value
+        comparison_value = data_set[1]._data[0].value
+
+        if this_value >= 2 * comparison_value:
+            doubling_cnt += 1
 
     if doubling_cnt >= 3:
         return True
